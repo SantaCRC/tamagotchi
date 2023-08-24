@@ -46,7 +46,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     // call stats module
     stats stats(
         .clk(clk),
-        .rst_n(rst_n),   // Connect the reset signal to stats module
+        .reset(rst_n),   // Connect the reset signal to stats module
         .hunger(hunger),
         .happiness(happiness),
         .health(health),
