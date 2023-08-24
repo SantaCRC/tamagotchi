@@ -32,6 +32,17 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     // use bidirectionals as outputs
     assign uio_oe = 8'b11111111;
 
+    // random number register
+    reg [31:0] random = 32'h00000000;
+
+    // call random module
+    random_pulse_generator random_pulse_generator(
+        .clk(clk),
+        .ce(ena),
+        .rst(reset),
+        .q(random)
+    );
+
     // call stats module
     stats stats(
         .clk(clk),

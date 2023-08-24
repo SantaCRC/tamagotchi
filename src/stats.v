@@ -8,6 +8,7 @@ module stats(
     output reg [3:0] energy,
     output reg [3:0] social,
     input wire [7:0] inputs,
+    input wire [2:0] random
 );
 
 // update randomly one of the stats every 1 second
@@ -16,8 +17,6 @@ reg [26:0] count = 0;
 always @(posedge clk) begin
     if (count == 27'd10_000_000) begin
         count <= 0;
-        // generate random number between 0 and 5
-        reg [2:0] random = $random % 6;
         case (random)
             0: begin
                 if (hunger < 4'd15) begin
