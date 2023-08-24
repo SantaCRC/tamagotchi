@@ -1,9 +1,11 @@
+
 module random(
-    input   in_clk,
-    input   in_n_rst,
-    input   [7:0] taps,
-    input   [7:0] reset_value,
-    output  reg [7:0] computed_value);
+    input   wire in_clk,
+    input   wire in_n_rst,
+    input   wire [7:0] taps,
+    input   wire [7:0] reset_value,
+    output  reg  [7:0] computed_value
+    );
 
     
     always @ (posedge in_clk, negedge in_n_rst)
