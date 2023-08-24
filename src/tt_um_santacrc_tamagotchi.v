@@ -46,6 +46,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     // call stats module
     stats stats(
         .clk(clk),
+        .reset(reset),
         .hunger(hunger),
         .happiness(happiness),
         .health(health),
