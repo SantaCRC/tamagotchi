@@ -43,11 +43,9 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
 
     // call random module
     random random(
-        .in_clk(clk),
-        .in_n_rst(reset),
-        .taps(taps),
-        .reset_value(seed),
-        .computed_value(random_number)
+        .clk(clk),
+        .rst(reset),
+        .rand_out(random_number)
     );
 
     // call stats module

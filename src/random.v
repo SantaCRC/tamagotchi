@@ -1,30 +1,20 @@
-
 module random(
-    input   wire in_clk,
-    input   wire in_n_rst,
-    input   wire [7:0] taps,
-    input   wire [7:0] reset_value,
-    output  reg  [7:0] computed_value
-    );
+    input wire clk,      // Clock input
+    input wire rst,      // Reset input
+    output wire [3:0] rand_out // 4-bit pseudo-random number output
+);
 
-    
-    always @ (posedge in_clk, negedge in_n_rst)
-    begin
-        if (!in_n_rst)
-        begin
-            computed_value <= reset_value;
-        end
-        else
-        begin
-            computed_value <= computed_value >> 1;
-            computed_value[7] <= computed_value[0] ^
-                                 ((taps[6]) ? computed_value[1] : 0) ^
-                                 ((taps[5]) ? computed_value[2] : 0) ^
-                                 ((taps[4]) ? computed_value[3] : 0) ^
-                                 ((taps[3]) ? computed_value[4] : 0) ^
-                                 ((taps[2]) ? computed_value[5] : 0) ^
-                                 ((taps[1]) ? computed_value[6] : 0) ^
-                                 ((taps[0]) ? computed_value[7] : 0);
-        end
+reg [3:0] lfsr_reg;     // 4-bit register to hold the LFSR state
+
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        lfsr_reg <= 4'b1111; // Initialize LFSR with all ones
+    end else begin
+        // XOR feedback taps for a 4-bit LFSR: 4, 3
+        lfsr_reg <= {lfsr_reg[2:0], lfsr_reg[3] ^ lfsr_reg[0]};
     end
-endmodule 
+end
+
+assign rand_out = lfsr_reg;
+
+endmodule
