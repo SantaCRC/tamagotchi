@@ -35,12 +35,16 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     // random number register
     reg [31:0] random = 32'h00000000;
 
+    // seed register
+    reg [31:0] seed = 32'h00001000;
+
     // call random module
-    random_pulse_generator random_pulse_generator(
-        .clk(clk),
-        .ce(ena),
-        .rst(reset),
-        .q(random)
+    random random(
+        .in_clk(clk),
+        .in_n_rst(reset),
+        .taps(8'hE1),
+        .reset_value(seed),
+        .computed_value(random)
     );
 
     // call stats module
@@ -52,7 +56,8 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
         .hygiene(hygiene),
         .energy(energy),
         .social(social),
-        .inputs(ui_in)
+        .inputs(ui_in),
+        .random(random[2:0])
     );
 
     // call states module
