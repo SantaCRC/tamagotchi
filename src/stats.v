@@ -2,7 +2,7 @@ module stats(
     input wire clk, // 27 MHz clock
     input wire reset, // reset
     input wire [7:0] inputs,
-    input wire [2:0] random,
+    input wire [4:0] random,
     output reg [3:0] hunger,
     output reg [3:0] happiness,
     output reg [3:0] health,
@@ -26,32 +26,32 @@ always @(posedge clk or posedge reset) begin
         if (count == 27'd10_000_000) begin
             count <= 0;
             case (random)
-                0: begin
+                5'd0: begin
                     if (hunger < 4'd15) begin
                         hunger <= hunger + 1;
                     end
                 end
-                1: begin
+                5'd1: begin
                     if (happiness < 4'd15) begin
                         happiness <= happiness + 1;
                     end
                 end
-                2: begin
+                5'd2: begin
                     if (health < 4'd15) begin
                         health <= health + 1;
                     end
                 end
-                3: begin
+                5'd3: begin
                     if (hygiene < 4'd15) begin
                         hygiene <= hygiene + 1;
                     end
                 end
-                4: begin
+                5'd4: begin
                     if (energy < 4'd15) begin
                         energy <= energy + 1;
                     end
                 end
-                5: begin
+                5'd5: begin
                     if (social < 4'd15) begin
                         social <= social + 1;
                     end
