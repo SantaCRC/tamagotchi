@@ -33,13 +33,8 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     assign uio_oe = 8'b11111111;
 
     // random number register
-    reg [31:0] random_number = 32'h00000000;
+    reg [3:0] random_number;
 
-    // seed register
-    reg [31:0] seed = 32'h00001000;
-
-    // taps register
-    reg [7:0] taps = 8'hE1;
 
     // call random module
     random random(
