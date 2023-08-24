@@ -6,9 +6,10 @@ project:
 # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
 # Source files must be in ./src and you must list each source file separately
   source_files:        
-    - tt_um_seven_segment_seconds.v
-    - decoder.v
-  top_module:  "tt_um_seven_segment_seconds"      # put the name of your top module here, make it unique by prepending your github username
+    - tt_santacrc_tamagotchi.v
+    - states.v
+    - stats.v
+  top_module:  "tt_santacrc_tamagotchi"      # put the name of your top module here, make it unique by prepending your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
 # Before changing this, please reach out to us on discord to discuss your design.
@@ -23,7 +24,7 @@ yaml_version: 4
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
   author:       "Fabian Alvarez"
-  title:        "7 segment seconds"
+  title:        "Tamagotchi"
   language:     "Verilog"
   description:  "Count up to 10, one second at a time."
 
