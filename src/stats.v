@@ -8,10 +8,11 @@ module stats(
     output reg [3:0] health,
     output reg [3:0] hygiene,
     output reg [3:0] energy,
-    // output reg [3:0] social
+    output reg [3:0] social
 );
 
 reg [26:0] count = 0;
+reg [2:0] state = 0;
 
 always @(posedge clk or posedge reset) begin
     if (reset) begin
@@ -21,41 +22,42 @@ always @(posedge clk or posedge reset) begin
         health <= 4'd0;
         hygiene <= 4'd0;
         energy <= 4'd0;
-        //social <= 4'd0;
+        social <= 4'd0;
     end else begin
         if (count == 27'd10_000_000) begin
             count <= 0;
-            case (random)
-                5'd0: begin
+            state <= state + 1;
+            case (state)
+                0: begin
                     if (hunger < 4'd15) begin
                         hunger <= hunger + 1;
                     end
                 end
-                5'd1: begin
+                1: begin
                     if (happiness < 4'd15) begin
                         happiness <= happiness + 1;
                     end
                 end
-                5'd2: begin
+                2: begin
                     if (health < 4'd15) begin
                         health <= health + 1;
                     end
                 end
-                5'd3: begin
+                3: begin
                     if (hygiene < 4'd15) begin
                         hygiene <= hygiene + 1;
                     end
                 end
-                5'd4: begin
+                4: begin
                     if (energy < 4'd15) begin
                         energy <= energy + 1;
                     end
                 end
-                // 5'd5: begin
-                //     if (social < 4'd15) begin
-                //         social <= social + 1;
-                //     end
-                // end
+                5: begin
+                    if (social < 4'd15) begin
+                        social <= social + 1;
+                    end
+                end
             endcase
         end
         else begin
@@ -73,7 +75,7 @@ always @(posedge clk or posedge reset) begin
         health <= 4'd0;
         hygiene <= 4'd0;
         energy <= 4'd0;
-        // social <= 4'd0;
+        social <= 4'd0;
     end else begin
         if (inputs[0] == 1'b1) begin
             if (hunger > 4'd0) begin
@@ -100,11 +102,11 @@ always @(posedge clk or posedge reset) begin
                 energy <= energy - 1;
             end
         end
-        // if (inputs[5] == 1'b1) begin
-        //     if (social > 4'd0) begin
-        //         social <= social - 1;
-        //     end
-        // end
+        if (inputs[5] == 1'b1) begin
+            if (social > 4'd0) begin
+                social <= social - 1;
+            end
+        end
     end
 end
 

@@ -36,9 +36,9 @@ always @(posedge clk) begin
         status[4] <= 1'b1;
     end
     // check if tamagotchi is lonely
-    // else if (social >= 4'd12) begin
-    //     status[5] <= 1'b1;
-    // end
+    else if (social >= 4'd12) begin
+        status[5] <= 1'b1;
+    end
     // check if tamagotchi is ok
     else begin
         status <= 7'b0000000;

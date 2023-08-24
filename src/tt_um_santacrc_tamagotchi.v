@@ -20,7 +20,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     reg [3:0] health = 4'd0;
     reg [3:0] hygiene = 4'd0;
     reg [3:0] energy = 4'd0;
-    // reg [3:0] social = 4'd0;
+    reg [3:0] social = 4'd0;
 
     // status register
     reg [6:0] status = 7'b0000000;
@@ -46,17 +46,16 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     // call stats module
     stats stats(
         .clk(clk),
-        .reset(rst_n),   // Connect the reset signal to stats module
+        .reset(reset),
         .hunger(hunger),
         .happiness(happiness),
         .health(health),
         .hygiene(hygiene),
         .energy(energy),
-        // .social(social),
+        .social(social),
         .inputs(ui_in),
         .random(random_number)
     );
-
 
     // call states module
     states states(
@@ -66,7 +65,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
         .health(health),
         .hygiene(hygiene),
         .energy(energy),
-        // .social(social),
+        .social(social),
         .status(status)
     );    
 
