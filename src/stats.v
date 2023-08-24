@@ -8,7 +8,7 @@ module stats(
     output reg [3:0] health,
     output reg [3:0] hygiene,
     output reg [3:0] energy,
-    output reg [3:0] social
+    // output reg [3:0] social
 );
 
 reg [26:0] count = 0;
@@ -21,7 +21,7 @@ always @(posedge clk or posedge reset) begin
         health <= 4'd0;
         hygiene <= 4'd0;
         energy <= 4'd0;
-        social <= 4'd0;
+        //social <= 4'd0;
     end else begin
         if (count == 27'd10_000_000) begin
             count <= 0;
@@ -51,11 +51,11 @@ always @(posedge clk or posedge reset) begin
                         energy <= energy + 1;
                     end
                 end
-                5'd5: begin
-                    if (social < 4'd15) begin
-                        social <= social + 1;
-                    end
-                end
+                // 5'd5: begin
+                //     if (social < 4'd15) begin
+                //         social <= social + 1;
+                //     end
+                // end
             endcase
         end
         else begin
@@ -73,7 +73,7 @@ always @(posedge clk or posedge reset) begin
         health <= 4'd0;
         hygiene <= 4'd0;
         energy <= 4'd0;
-        social <= 4'd0;
+        // social <= 4'd0;
     end else begin
         if (inputs[0] == 1'b1) begin
             if (hunger > 4'd0) begin
@@ -100,11 +100,11 @@ always @(posedge clk or posedge reset) begin
                 energy <= energy - 1;
             end
         end
-        if (inputs[5] == 1'b1) begin
-            if (social > 4'd0) begin
-                social <= social - 1;
-            end
-        end
+        // if (inputs[5] == 1'b1) begin
+        //     if (social > 4'd0) begin
+        //         social <= social - 1;
+        //     end
+        // end
     end
 end
 
