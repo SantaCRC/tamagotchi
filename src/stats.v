@@ -2,7 +2,7 @@ module stats(
     input wire clk, // 27 MHz clock
     input wire reset, // reset
     input wire [7:0] inputs,
-    input wire [4:0] random,
+    input wire [3:0] random,
     output reg [3:0] hunger,
     output reg [3:0] happiness,
     output reg [3:0] health,
