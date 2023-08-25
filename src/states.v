@@ -6,7 +6,7 @@ module states (
     input wire [3:0] health,
     input wire [3:0] hygiene,
     input wire [3:0] energy,
-    // input wire [3:0] social,
+    input wire [3:0] social,
     output reg [6:0] status    
 );
 
