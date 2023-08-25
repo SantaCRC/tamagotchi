@@ -11,6 +11,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     input  wire       rst_n     // reset_n - low to reset
 );
 
+
     wire reset = ! rst_n;
     wire [6:0] led_out;
 
@@ -26,7 +27,8 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     reg [6:0] status;
 
     // output status to leds
-    assign led_out = status;
+    assign uo_out = status;
+    assign uio_out = status;
     
 
     // use bidirectionals as outputs
