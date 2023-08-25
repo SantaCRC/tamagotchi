@@ -23,7 +23,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     reg [3:0] social;
 
     // status register
-    reg [6:0] status = 7'b0000000;
+    reg [6:0] status;
 
     // output status to leds
     assign led_out = status;
