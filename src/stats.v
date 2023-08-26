@@ -17,7 +17,7 @@ module stats(
         if (reset) begin
             // Reiniciar estadísticas en caso de reset
             {hunger, happiness, health, hygiene, energy, social} <= 6'b0;
-            count <= 0; // Reiniciar el contador cuando se presiona el botón de reset
+            count = 0; // Reiniciar el contador cuando se presiona el botón de reset
         end else begin
             if (count == 13'd10000) begin
                 count = 0;
@@ -35,7 +35,7 @@ module stats(
             if (inputs[3]) hygiene <= (hygiene > 4'd0) ? hygiene - 1 : hygiene;
             if (inputs[4]) energy <= (energy > 4'd0) ? energy - 5 : energy;
             if (inputs[5]) social <= (social > 4'd0) ? social - 1 : social;
-            count <= count + 1;
+            count = count + 1;
         end
     end
 
