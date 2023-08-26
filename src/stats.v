@@ -76,16 +76,8 @@ always @(posedge clk or posedge reset) begin
 end
 
 // logic to decrement stats
-always @(posedge clk or posedge reset) begin
-    if (reset) begin
-        // Initialize all stats including social to 0 on reset
-        hunger <= 4'd0;
-        happiness <= 4'd0;
-        health <= 4'd0;
-        hygiene <= 4'd0;
-        energy <= 4'd0;
-        social <= 4'd0;
-    end else begin
+always @(posedge clk or posedge reset) 
+begin
         if (inputs[0] == 1'b1) begin
             if (hunger > 4'd0) begin
                 hunger <= hunger - 1;
@@ -117,6 +109,5 @@ always @(posedge clk or posedge reset) begin
             end
         end
     end
-end
 
 endmodule
