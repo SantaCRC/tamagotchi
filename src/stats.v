@@ -31,14 +31,14 @@ module stats(
         end
     end
 
-    always @(posedge clk) begin
-        // Decrementar estadísticas si se presiona alguna entrada
-        if (inputs[0]) hunger <= (hunger > 4'd0) ? hunger - 1 : hunger;
-        if (inputs[1]) happiness <= (happiness > 4'd0) ? happiness - 1 : happiness;
-        if (inputs[2]) health <= (health > 4'd0) ? health - 1 : health;
-        if (inputs[3]) hygiene <= (hygiene > 4'd0) ? hygiene - 1 : hygiene;
-        if (inputs[4]) energy <= (energy > 4'd0) ? energy - 5 : energy;
-        if (inputs[5]) social <= (social > 4'd0) ? social - 1 : social;
-    end
+    // always @(posedge clk) begin
+    //     // Decrementar estadísticas si se presiona alguna entrada
+    //     if (inputs[0]) hunger <= (hunger > 4'd0) ? hunger - 1 : hunger;
+    //     if (inputs[1]) happiness <= (happiness > 4'd0) ? happiness - 1 : happiness;
+    //     if (inputs[2]) health <= (health > 4'd0) ? health - 1 : health;
+    //     if (inputs[3]) hygiene <= (hygiene > 4'd0) ? hygiene - 1 : hygiene;
+    //     if (inputs[4]) energy <= (energy > 4'd0) ? energy - 5 : energy;
+    //     if (inputs[5]) social <= (social > 4'd0) ? social - 1 : social;
+    // end
 
 endmodule

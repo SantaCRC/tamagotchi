@@ -39,18 +39,18 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
 
 
     // call stats module
-    // stats stats(
-    //     .clk(clk),
-    //     .random(random_number),
-    //     .reset(reset),
-    //     .hunger(hunger),
-    //     .happiness(happiness),
-    //     .health(health),
-    //     .hygiene(hygiene),
-    //     .energy(energy),
-    //     .social(social),
-    //     .inputs(ui_in)
-    // );
+    stats stats(
+        .clk(clk),
+        .random(random_number),
+        .reset(reset),
+        .hunger(hunger),
+        .happiness(happiness),
+        .health(health),
+        .hygiene(hygiene),
+        .energy(energy),
+        .social(social),
+        .inputs(ui_in)
+    );
 
     // call states module
     states states(
