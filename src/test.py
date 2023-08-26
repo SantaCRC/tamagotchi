@@ -17,12 +17,11 @@ async def status(dut):
     await ClockCycles(dut.clk, 1)
     dut.rst_n.value = 1
     # set the compare value
-    dut.ui_in.value = 1
     await ClockCycles(dut.clk, 10)
 
     dut._log.info("check status") 
     for i in range(10):
-        await Timer(1, units='sec')
+        await Timer(0.1, units='sec')
         dut._log.info("status: %d" % dut.status.value)
     
 

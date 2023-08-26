@@ -34,16 +34,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     // use bidirectionals as outputs
     assign uio_oe = 8'b11111111;
 
-    // random number register
-    reg [3:0] random_number;
-
-
     // call random module
-    random random(
-        .clk(clk),
-        .rst(reset),
-        .rand_out(random_number)
-    );
 
     // call stats module
     stats stats(
@@ -55,8 +46,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
         .hygiene(hygiene),
         .energy(energy),
         .social(social),
-        .inputs(ui_in),
-        .random(random_number)
+        .inputs(ui_in)
     );
 
     // call states module
