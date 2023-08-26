@@ -11,7 +11,7 @@ module stats(
     output reg [3:0] social      // Estadística social
 );
 
-    reg [9:0] count = 0; // Contador de tiempo
+    reg [12:0] count = 0; // Contador de tiempo
 
     always @(posedge clk or posedge reset) begin
         if (reset) begin
@@ -19,8 +19,8 @@ module stats(
             {hunger, happiness, health, hygiene, energy, social} <= 6'b0;
             count <= 0; // Reiniciar el contador cuando se presiona el botón de reset
         end else begin
-            if (count == 9'd1000) begin
-                count <= 0;
+            if (count == 13'd10000) begin
+                count = 0;
                 // Incrementar estadísticas aleatoriamente si no se presiona ninguna entrada
                 case (random[1:0])
                     2'b00: hunger <= (hunger < 4'd15) ? hunger + 1 : hunger;
