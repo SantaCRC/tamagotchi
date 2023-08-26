@@ -11,7 +11,6 @@ module stats(
 );
 
 reg [26:0] count = 0;
-
 wire [7:0] random_number;
 
 // generate random number
@@ -20,9 +19,6 @@ random random(
     .rst(reset),
     .rand_out(random_number)
 );
-
-
-// logic to increment stats
 
 always @(posedge clk or posedge reset) begin
     if (reset) begin
