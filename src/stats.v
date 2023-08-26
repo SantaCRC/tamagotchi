@@ -1,8 +1,8 @@
 module stats(
-    input wire clk,       // Clock de sistema
-    input wire reset,     // Señal de reset
-    input wire [7:0] inputs, // Señal de entrada de botones
-    input wire [7:0] random, // Valor aleatorio de 8 bits
+    input wire clk,               // Clock de sistema
+    input wire reset,            // Señal de reset
+    input wire [7:0] inputs,     // Señal de entrada de botones
+    input wire [7:0] random,     // Valor aleatorio de 8 bits
     output reg [3:0] hunger,     // Estadística de hambre
     output reg [3:0] happiness,  // Estadística de felicidad
     output reg [3:0] health,     // Estadística de salud
@@ -17,17 +17,19 @@ module stats(
         if (reset) begin
             // Reiniciar estadísticas en caso de reset
             {hunger, happiness, health, hygiene, energy, social} <= 6'b0;
-        end else if (!inputs && count == 18'd1000) begin
-            count <= 0;
-            // Incrementar estadísticas aleatoriamente si no se presiona ninguna entrada
-            case (random[1:0])
-                2'b00: hunger <= (hunger < 4'd15) ? hunger + 1 : hunger;
-                2'b01: happiness <= (happiness < 4'd15) ? happiness + 1 : happiness;
-                2'b10: health <= (health < 4'd15) ? health + 1 : health;
-                2'b11: hygiene <= (hygiene < 4'd15) ? hygiene + 1 : hygiene;
-            endcase
         end else begin
-            count <= count + 1;
+            // Incrementar estadísticas aleatoriamente si no se presiona ninguna entrada
+            if (!inputs && count == 18'd1000) begin
+                count <= 0;
+                case (random[1:0])
+                    2'b00: hunger <= (hunger < 4'd15) ? hunger + 1 : hunger;
+                    2'b01: happiness <= (happiness < 4'd15) ? happiness + 1 : happiness;
+                    2'b10: health <= (health < 4'd15) ? health + 1 : health;
+                    2'b11: hygiene <= (hygiene < 4'd15) ? hygiene + 1 : hygiene;
+                endcase
+            end else begin
+                count <= count + 1;
+            end
         end
     end
 
