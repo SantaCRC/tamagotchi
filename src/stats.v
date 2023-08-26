@@ -12,12 +12,11 @@ module stats(
 
 reg [26:0] count = 0;
 
-wire [3:0] random_number;
-reg clk_1hz = 0;
+wire [7:0] random_number;
 
 // generate random number
 random random(
-    .clk(clk_1hz),
+    .clk(clk),
     .rst(reset),
     .rand_out(random_number)
 );
@@ -36,7 +35,6 @@ always @(posedge clk or posedge reset) begin
         social <= 4'd0;
     end else begin
         if (count == 27'd1000) begin
-            clk_1hz <= 1;
             count <= 0;
             case (random_number)
                 6: begin
@@ -73,7 +71,6 @@ always @(posedge clk or posedge reset) begin
         end
         else begin
             count <= count + 1;
-            clk_1hz <= 0;
         end
     end
 end
