@@ -9,7 +9,7 @@ TOPLEVEL_LANG ?= verilog
 ifneq ($(GATES),yes)
 
 # this is the only part you should need to modify:
-VERILOG_SOURCES += $(PWD)/tb.v $(PWD)/tt_um_santacrc_tamagotchi.v $(PWD)/states.v $(PWD)/stats.v $(PWD)/random.v $(PWD)/decrese_stats.v
+VERILOG_SOURCES += $(PWD)/tb.v $(PWD)/tt_um_santacrc_tamagotchi.v $(PWD)/states.v $(PWD)/stats.v $(PWD)/random.v $(PWD)/decrese_stats.v $(PWD)/uart.v
 
 else
 

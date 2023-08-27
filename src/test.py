@@ -27,7 +27,7 @@ async def status(dut):
     
     # Check if is gate level test
     try:
-        dut.tt_um_fsm.current_state.value
+        dut.tt_um_santacrc_tamagotchi.hygiene
         dut._log.info("Pre-Sythnesis test")
     except:
         dut._log.info("Gate level test")
@@ -36,7 +36,7 @@ async def status(dut):
     if (not gate_level_test):  
         for i in range(10):
             await Timer(0.1, units='sec')
-            dut._log.info("status: %d" % dut.status.value)
+            dut._log.info("status: %d" % dut.tt_um_santacrc_tamagotchi.status.value)
             dut._log.info("hy: %d" % dut.tt_um_santacrc_tamagotchi.hygiene.value)
             dut._log.info("hu: %d" % dut.tt_um_santacrc_tamagotchi.hunger.value)
             dut._log.info("hp: %d" % dut.tt_um_santacrc_tamagotchi.happiness.value)
