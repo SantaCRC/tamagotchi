@@ -28,7 +28,6 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     reg [6:0] status;
 
     // output status to leds
-    assign uo_out = status;
     assign uio_out = status;
     
     // random number
@@ -72,12 +71,12 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     );
     
     // call uart module
-    // uart uart(
-    //     .clk(clk),
-    //     .uart_rx(ui_in[0]),
-    //     .uart_tx(uo_out[0]),
-    //     .led(uo_out[6:1]),
-    //     .btn1(ui_in[1])
-    // );
+    uart uart(
+        .clk(clk),
+        .uart_rx(ui_in[0]),
+        .uart_tx(uo_out[0]),
+        .led(uo_out[6:1]),
+        .btn1(ui_in[1])
+    );
 
 endmodule
