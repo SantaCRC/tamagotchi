@@ -72,12 +72,12 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     );
     
     // call uart module
-    uart uart(
-        .clk(clk),
-        .uart_rx(ui_in[0]),
-        .uart_tx(uo_out[0]),
-        .led(uo_out[6:1]),
-        .btn1(ui_in[1])
-    );
+    // uart uart(
+    //     .clk(clk),
+    //     .uart_rx(ui_in[0]),
+    //     .uart_tx(uo_out[0]),
+    //     .led(uo_out[6:1]),
+    //     .btn1(ui_in[1])
+    // );
 
 endmodule
