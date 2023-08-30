@@ -9,7 +9,8 @@ module uart
     input  uart_rx,
     output uart_tx,
     output reg [5:0] led,
-    input btn1
+    input btn1,
+    input wire [7:0] ran_in,
 );
 
 localparam HALF_DELAY_WAIT = (DELAY_FRAMES / 2);
@@ -80,11 +81,11 @@ reg [24:0] txCounter = 0;
 reg [7:0] dataOut = 0;
 reg txPinRegister = 1;
 reg [2:0] txBitNumber = 0;
-reg [4:0] txByteCounter = 0;
+reg [6:0] txByteCounter = 0;
 
 assign uart_tx = txPinRegister;
 
-localparam MEMORY_LENGTH = 26;
+localparam MEMORY_LENGTH = 44;
 reg [7:0] testMemory [MEMORY_LENGTH-1:0];
 
 // (\__/)
@@ -118,6 +119,24 @@ initial begin
     testMemory[23] = ")";
     testMemory[24] = "\r";
     testMemory[25] = "\n";
+    testMemory[26] = "R";
+    testMemory[27] = "A";
+    testMemory[28] = "N";
+    testMemory[29] = "D";
+    testMemory[30] = "O";
+    testMemory[31] = "M";
+    testMemory[32] = " ";
+    testMemory[33] = "N";
+    testMemory[34] = "U";
+    testMemory[35] = "M";
+    testMemory[36] = "B";
+    testMemory[37] = "E";
+    testMemory[38] = "R";
+    testMemory[39] = ":";
+    testMemory[40] = " ";
+    testMemory[41] = "0";
+    testMemory[42] = "\r";
+    testMemory[43] = "\n";
 end
 
 localparam TX_STATE_IDLE = 0;
@@ -127,6 +146,7 @@ localparam TX_STATE_STOP_BIT = 3;
 localparam TX_STATE_DEBOUNCE = 4;
 
 always @(posedge clk) begin
+    testMemory[41] = ran_in;
     case (txState)
         TX_STATE_IDLE: begin
             if (btn1 == 0) begin
