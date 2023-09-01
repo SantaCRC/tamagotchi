@@ -21,7 +21,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
 
     // stats registers
     reg [3:0] hunger;
-    reg [3:0] happiness;
+    reg [4:0] happiness;
     reg [3:0] health;
     reg [3:0] hygiene;
     reg [3:0] energy;

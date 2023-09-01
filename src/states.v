@@ -3,7 +3,7 @@ module states (
     input wire clk,
     input wire reset,
     input wire [3:0] hunger,
-    input wire [3:0] happiness,
+    input wire [4:0] happiness,
     input wire [3:0] health,
     input wire [3:0] hygiene,
     input wire [3:0] energy,
@@ -21,7 +21,7 @@ always @(posedge clk) begin
         status[0] <= 1'b1;
     end
     // check if tamagotchi is unhappy
-    else if (happiness >= 4'd12) begin
+    else if (happiness >= 5'd12) begin
         status[1] <= 1'b1;
     end
     // check if tamagotchi is sick
