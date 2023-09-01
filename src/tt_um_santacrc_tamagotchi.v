@@ -16,6 +16,8 @@ reg [7:0] uio_oe;
     reg [7:0] led_out_reg;
     wire second;
     wire [7:0] dataIn;
+    wire rx = ui_in[0];
+    wire tx = uo_out[0];	
 
     // stats registers
     reg [3:0] hunger;
