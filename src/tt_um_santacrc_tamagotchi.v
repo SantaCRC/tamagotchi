@@ -17,6 +17,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     wire [7:0] dataIn;
     wire rx = ui_in[0];
     wire tx = uo_out[0];	
+    assign uo_out[7:1] = 7'b0000000;
 
     // stats registers
     reg [3:0] hunger;
