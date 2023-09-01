@@ -24,10 +24,10 @@ module stats(
             hygiene <= 0;
             energy <= 0;
             social <= 0;
-            count = 0; // Reiniciar el contador cuando se presiona el botón de reset
+            count <= 0; // Reiniciar el contador cuando se presiona el botón de reset
         end else begin
             if (count == 28'd27000000) begin
-                count = 0;
+                count <= 0;
                 second = ~second; // Cambiar el segundo de la animación
                 // Incrementar estadísticas aleatoriamente si no se presiona ninguna entrada
                 case (random[2:0])
@@ -55,7 +55,7 @@ module stats(
         if (inputs == 8'h00) begin
             only_one = 0; // Reiniciar la bandera para permitir que se incrementen las estadísticas
         end
-            count = count + 1;
+            count <= count + 1;
         end
     end
 

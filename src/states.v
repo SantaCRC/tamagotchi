@@ -41,9 +41,6 @@ always @(posedge clk) begin
         status[5] <= 1'b1;
     end
     // check if tamagotchi is ok
-    else if (reset)begin
-        status <= 8'b0000000;
-    end
     else begin
         status <= 8'b0000000;
     end
