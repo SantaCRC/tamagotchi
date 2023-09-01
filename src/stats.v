@@ -32,7 +32,7 @@ module stats(
                 // Incrementar estadísticas aleatoriamente si no se presiona ninguna entrada
                 case (random[2:0])
                     3'b001: hunger <= (hunger < 4'd15) ? hunger + 1 : hunger;
-                    3'b000: happiness <= (happiness < 4'd15) ? happiness + 1 : happiness;
+                    3'b000: happiness <= (happiness < 5'd15) ? happiness + 1 : happiness;
                     3'b010: health <= (health < 4'd15) ? health + 1 : health;
                     3'b011: hygiene <= (hygiene < 4'd15) ? hygiene + 1 : hygiene;
                     3'b110: energy <= (energy < 4'd15) ? energy + 1 : energy;

@@ -12,7 +12,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
 );
     wire reset = ! rst_n;
     wire [6:0] led_out;
-    reg [7:0] led_out_reg;
+    reg [5:0] led_out_reg;
     wire second;
     wire [7:0] dataIn;
     wire rx = ui_in[0];
