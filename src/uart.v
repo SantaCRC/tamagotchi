@@ -7,19 +7,27 @@ module uart
 (
     input  clk,
     input  uart_rx,
+    input  [7:0] status,
     output uart_tx,
     output reg [5:0] led,
     input btn1,
     input wire [7:0] ran_in,
+    input wire [3:0] hunger,
+    input wire [3:0] happiness,
+    input wire [3:0] health,
+    input wire [3:0] hygiene,
+    input wire [3:0] energy,
+    input wire [3:0] social,
+    output reg [7:0] dataIn_R
 );
 
 localparam HALF_DELAY_WAIT = (DELAY_FRAMES / 2);
 
 reg [3:0] rxState = 0;
 reg [12:0] rxCounter = 0;
-reg [7:0] dataIn = 0;
 reg [2:0] rxBitNumber = 0;
 reg byteReady = 0;
+reg [7:0] dataIn = 0;
 
 localparam RX_STATE_IDLE = 0;
 localparam RX_STATE_START_BIT = 1;
@@ -70,22 +78,17 @@ always @(posedge clk) begin
     endcase
 end
 
-always @(posedge clk) begin
-    if (byteReady) begin
-        led <= ~dataIn[5:0];
-    end
-end
 
 reg [3:0] txState = 0;
 reg [24:0] txCounter = 0;
 reg [7:0] dataOut = 0;
 reg txPinRegister = 1;
 reg [2:0] txBitNumber = 0;
-reg [6:0] txByteCounter = 0;
+reg [7:0] txByteCounter = 0;
 
 assign uart_tx = txPinRegister;
 
-localparam MEMORY_LENGTH = 44;
+localparam MEMORY_LENGTH = 80;
 reg [7:0] testMemory [MEMORY_LENGTH-1:0];
 
 // (\__/)
@@ -119,24 +122,64 @@ initial begin
     testMemory[23] = ")";
     testMemory[24] = "\r";
     testMemory[25] = "\n";
-    testMemory[26] = "R";
-    testMemory[27] = "A";
-    testMemory[28] = "N";
-    testMemory[29] = "D";
-    testMemory[30] = "O";
-    testMemory[31] = "M";
-    testMemory[32] = " ";
-    testMemory[33] = "N";
+    testMemory[26] = "S";
+    testMemory[27] = "T";
+    testMemory[28] = "A";
+    testMemory[29] = "T";
+    testMemory[30] = "S";
+    testMemory[31] = "\r";
+    testMemory[32] = "\n";
+    testMemory[33] = "H";
     testMemory[34] = "U";
-    testMemory[35] = "M";
-    testMemory[36] = "B";
-    testMemory[37] = "E";
-    testMemory[38] = "R";
-    testMemory[39] = ":";
-    testMemory[40] = " ";
-    testMemory[41] = "0";
-    testMemory[42] = "\r";
-    testMemory[43] = "\n";
+    testMemory[35] = ":";
+    testMemory[36] = " ";
+    testMemory[37] = "0";
+    testMemory[38] = "0";
+    testMemory[39] = "\r";
+    testMemory[40] = "\n";
+    testMemory[41] = "H";
+    testMemory[42] = "A";
+    testMemory[43] = ":";
+    testMemory[44] = " ";
+    testMemory[45] = "0";
+    testMemory[46] = "0";
+    testMemory[47] = "\r";
+    testMemory[48] = "\n";
+    testMemory[49] = "H";
+    testMemory[50] = "E";
+    testMemory[51] = ":";
+    testMemory[52] = " ";
+    testMemory[53] = "0";
+    testMemory[54] = "0";
+    testMemory[55] = "\r";
+    testMemory[56] = "\n";
+    testMemory[57] = "H";
+    testMemory[58] = "Y";
+    testMemory[59] = ":";
+    testMemory[60] = " ";
+    testMemory[61] = "0";
+    testMemory[62] = "0";
+    testMemory[63] = "\r";
+    testMemory[64] = "\n";
+    testMemory[65] = "E";
+    testMemory[66] = ":";
+    testMemory[67] = " ";
+    testMemory[68] = "0";
+    testMemory[69] = "0";
+    testMemory[70] = "\r";
+    testMemory[71] = "\n";
+    testMemory[72] = "S";
+    testMemory[73] = "O";
+    testMemory[74] = ":";
+    testMemory[75] = " ";
+    testMemory[76] = "0";
+    testMemory[77] = "0";
+    testMemory[78] = "\r";
+    testMemory[79] = "\n";
+    // clear screen
+    testMemory[80] = "C";
+
+
 end
 
 localparam TX_STATE_IDLE = 0;
@@ -146,7 +189,480 @@ localparam TX_STATE_STOP_BIT = 3;
 localparam TX_STATE_DEBOUNCE = 4;
 
 always @(posedge clk) begin
-    testMemory[41] = ran_in;
+    // case hunger
+    case (hunger)
+        4'd0: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "0";
+            testMemory[38] = "0";
+        end
+        4'd1: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "0";
+            testMemory[38] = "1";
+        end
+        4'd2: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "0";
+            testMemory[38] = "2";
+        end
+        4'd3: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "0";
+            testMemory[38] = "3";
+        end
+        4'd4: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "0";
+            testMemory[38] = "4";
+        end
+        4'd5: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "0";
+            testMemory[38] = "5";
+        end
+        4'd6: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "0";
+            testMemory[38] = "6";
+        end
+        4'd7: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "0";
+            testMemory[38] = "7";
+        end
+        4'd8: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "0";
+            testMemory[38] = "8";
+        end
+        4'd9: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "0";
+            testMemory[38] = "9";
+        end
+        4'd10: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "1";
+            testMemory[38] = "0";
+        end
+        4'd11: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "1";
+            testMemory[38] = "1";
+        end
+        4'd12: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "1";
+            testMemory[38] = "2";
+        end
+        4'd13: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "1";
+            testMemory[38] = "3";
+        end
+        4'd14: begin
+            testMemory[10] = "'";
+            testMemory[12] = "'";
+            testMemory[37] = "1";
+            testMemory[38] = "4";
+        end
+        4'd15: begin
+            testMemory[37] = "1";
+            testMemory[38] = "5";
+            testMemory[10] = "X";
+            testMemory[12] = "X";
+        end
+        default: begin
+            testMemory[37] = "0";
+            testMemory[38] = "0";
+        end
+    endcase
+
+    // case happiness
+    case (happiness)
+    4'd0: begin
+        testMemory[45] = "0";
+        testMemory[46] = "0";
+    end
+    4'd1: begin
+        testMemory[45] = "0";
+        testMemory[46] = "1";
+    end
+    4'd2: begin
+        testMemory[45] = "0";
+        testMemory[46] = "2";
+    end
+    4'd3: begin
+        testMemory[45] = "0";
+        testMemory[46] = "3";
+    end
+    4'd4: begin
+        testMemory[45] = "0";
+        testMemory[46] = "4";
+    end
+    4'd5: begin
+        testMemory[45] = "0";
+        testMemory[46] = "5";
+    end
+    4'd6: begin
+        testMemory[45] = "0";
+        testMemory[46] = "6";
+    end
+    4'd7: begin
+        testMemory[45] = "0";
+        testMemory[46] = "7";
+    end
+    4'd8: begin
+        testMemory[45] = "0";
+        testMemory[46] = "8";
+    end
+    4'd9: begin
+        testMemory[45] = "0";
+        testMemory[46] = "9";
+    end
+    4'd10: begin
+        testMemory[45] = "1";
+        testMemory[46] = "0";
+    end
+    4'd11: begin
+        testMemory[45] = "1";
+        testMemory[46] = "1";
+    end
+    4'd12: begin
+        testMemory[45] = "1";
+        testMemory[46] = "2";
+    end
+    4'd13: begin
+        testMemory[45] = "1";
+        testMemory[46] = "3";
+    end
+    4'd14: begin
+        testMemory[45] = "1";
+        testMemory[46] = "4";
+    end
+    4'd15: begin
+        testMemory[45] = "1";
+        testMemory[46] = "5";
+        testMemory[10] = "X";
+        testMemory[12] = "X";
+    end
+    default: begin
+        testMemory[45] = "0";
+        testMemory[46] = "0";
+    end
+endcase
+
+    // case health
+    case (health)
+    4'd0: begin
+        testMemory[53] = "0";
+        testMemory[54] = "0";
+    end
+    4'd1: begin
+        testMemory[53] = "0";
+        testMemory[54] = "1";
+    end
+    4'd2: begin
+        testMemory[53] = "0";
+        testMemory[54] = "2";
+    end
+    4'd3: begin
+        testMemory[53] = "0";
+        testMemory[54] = "3";
+    end
+    4'd4: begin
+        testMemory[53] = "0";
+        testMemory[54] = "4";
+    end
+    4'd5: begin
+        testMemory[53] = "0";
+        testMemory[54] = "5";
+    end
+    4'd6: begin
+        testMemory[53] = "0";
+        testMemory[54] = "6";
+    end
+    4'd7: begin
+        testMemory[53] = "0";
+        testMemory[54] = "7";
+    end
+    4'd8: begin
+        testMemory[53] = "0";
+        testMemory[54] = "8";
+    end
+    4'd9: begin
+        testMemory[53] = "0";
+        testMemory[54] = "9";
+    end
+    4'd10: begin
+        testMemory[53] = "1";
+        testMemory[54] = "0";
+    end
+    4'd11: begin
+        testMemory[53] = "1";
+        testMemory[54] = "1";
+    end
+    4'd12: begin
+        testMemory[53] = "1";
+        testMemory[54] = "2";
+    end
+    4'd13: begin
+        testMemory[53] = "1";
+        testMemory[54] = "3";
+    end
+    4'd14: begin
+        testMemory[53] = "1";
+        testMemory[54] = "4";
+    end
+    4'd15: begin
+        testMemory[53] = "1";
+        testMemory[54] = "5";
+        testMemory[10] = "X";
+        testMemory[12] = "X";
+    end
+    default: begin
+        testMemory[53] = "0";
+        testMemory[54] = "0";
+    end
+
+    endcase
+
+    // case hygiene
+    case (hygiene)
+    4'd0: begin
+        testMemory[61] = "0";
+        testMemory[62] = "0";
+    end
+    4'd1: begin
+        testMemory[61] = "0";
+        testMemory[62] = "1";
+    end
+    4'd2: begin
+        testMemory[61] = "0";
+        testMemory[62] = "2";
+    end
+    4'd3: begin
+        testMemory[61] = "0";
+        testMemory[62] = "3";
+    end
+    4'd4: begin
+        testMemory[61] = "0";
+        testMemory[62] = "4";
+    end
+    4'd5: begin
+        testMemory[61] = "0";
+        testMemory[62] = "5";
+    end
+    4'd6: begin
+        testMemory[61] = "0";
+        testMemory[62] = "6";
+    end
+    4'd7: begin
+        testMemory[61] = "0";
+        testMemory[62] = "7";
+    end
+    4'd8: begin
+        testMemory[61] = "0";
+        testMemory[62] = "8";
+    end
+    4'd9: begin
+        testMemory[61] = "0";
+        testMemory[62] = "9";
+    end
+    4'd10: begin
+        testMemory[61] = "1";
+        testMemory[62] = "0";
+    end
+    4'd11: begin
+        testMemory[61] = "1";
+        testMemory[62] = "1";
+    end
+    4'd12: begin
+        testMemory[61] = "1";
+        testMemory[62] = "2";
+    end
+    4'd13: begin
+        testMemory[61] = "1";
+        testMemory[62] = "3";
+    end
+    4'd14: begin
+        testMemory[61] = "1";
+        testMemory[62] = "4";
+    end
+    4'd15: begin
+        testMemory[61] = "1";
+        testMemory[62] = "5";
+        testMemory[10] = "X";
+        testMemory[12] = "X";
+    end
+    default: begin
+        testMemory[61] = "0";
+        testMemory[62] = "0";
+    end
+    endcase
+
+    // case energy
+    case (energy)
+    4'd0: begin
+        testMemory[68] = "0";
+        testMemory[69] = "0";
+    end
+    4'd1: begin
+        testMemory[68] = "0";
+        testMemory[69] = "1";
+    end
+    4'd2: begin
+        testMemory[68] = "0";
+        testMemory[69] = "2";
+    end
+    4'd3: begin
+        testMemory[68] = "0";
+        testMemory[69] = "3";
+    end
+    4'd4: begin
+        testMemory[68] = "0";
+        testMemory[69] = "4";
+    end
+    4'd5: begin
+        testMemory[68] = "0";
+        testMemory[69] = "5";
+    end
+    4'd6: begin
+        testMemory[68] = "0";
+        testMemory[69] = "6";
+    end
+    4'd7: begin
+        testMemory[68] = "0";
+        testMemory[69] = "7";
+    end
+    4'd8: begin
+        testMemory[68] = "0";
+        testMemory[69] = "8";
+    end
+    4'd9: begin
+        testMemory[68] = "0";
+        testMemory[69] = "9";
+    end
+    4'd10: begin
+        testMemory[68] = "1";
+        testMemory[69] = "0";
+    end
+    4'd11: begin
+        testMemory[68] = "1";
+        testMemory[69] = "1";
+    end
+    4'd12: begin
+        testMemory[68] = "1";
+        testMemory[69] = "2";
+    end
+    4'd13: begin
+        testMemory[68] = "1";
+        testMemory[69] = "3";
+    end
+    4'd14: begin
+        testMemory[68] = "1";
+        testMemory[69] = "4";
+    end
+    4'd15: begin
+        testMemory[68] = "1";
+        testMemory[69] = "5";
+        testMemory[10] = "X";
+        testMemory[12] = "X";
+    end
+    default: begin
+        testMemory[68] = "0";
+        testMemory[69] = "0";
+    end
+    endcase
+    // case social
+    case (social)
+    4'd0: begin
+        testMemory[76] = "0";
+        testMemory[77] = "0";
+    end
+    4'd1: begin
+        testMemory[76] = "0";
+        testMemory[77] = "1";
+    end
+    4'd2: begin
+        testMemory[76] = "0";
+        testMemory[77] = "2";
+    end
+    4'd3: begin
+        testMemory[76] = "0";
+        testMemory[77] = "3";
+    end
+    4'd4: begin
+        testMemory[76] = "0";
+        testMemory[77] = "4";
+    end
+    4'd5: begin
+        testMemory[76] = "0";
+        testMemory[77] = "5";
+    end
+    4'd6: begin
+        testMemory[76] = "0";
+        testMemory[77] = "6";
+    end
+    4'd7: begin
+        testMemory[76] = "0";
+        testMemory[77] = "7";
+    end
+    4'd8: begin
+        testMemory[76] = "0";
+        testMemory[77] = "8";
+    end
+    4'd9: begin
+        testMemory[76] = "0";
+        testMemory[77] = "9";
+    end
+    4'd10: begin
+        testMemory[76] = "1";
+        testMemory[77] = "0";
+    end
+    4'd11: begin
+        testMemory[76] = "1";
+        testMemory[77] = "1";
+    end
+    4'd12: begin
+        testMemory[76] = "1";
+        testMemory[77] = "2";
+    end
+    4'd13: begin
+        testMemory[76] = "1";
+        testMemory[77] = "3";
+    end
+    4'd14: begin
+        testMemory[76] = "1";
+        testMemory[77] = "4";
+    end
+    4'd15: begin
+        testMemory[76] = "1";
+        testMemory[77] = "5";
+        testMemory[10] = "X";
+        testMemory[12] = "X";
+    end
+    default: begin
+        testMemory[76] = "0";
+        testMemory[77] = "0";
+    end
+    endcase
+
     case (txState)
         TX_STATE_IDLE: begin
             if (btn1 == 0) begin
@@ -203,4 +719,14 @@ always @(posedge clk) begin
         end
     endcase      
 end
+
+always @(posedge clk) begin
+    if (byteReady) begin
+        dataIn_R <= dataIn;
+    end
+    else begin
+        dataIn_R <= 8'h00;
+    end
+end
+
 endmodule

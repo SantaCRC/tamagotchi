@@ -10,10 +10,12 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-
-
+reg [7:0] uio_oe;
     wire reset = ! rst_n;
     wire [6:0] led_out;
+    reg [7:0] led_out_reg;
+    wire second;
+    wire [7:0] dataIn;
 
     // stats registers
     reg [3:0] hunger;
@@ -23,11 +25,13 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     reg [3:0] energy;
     reg [3:0] social;
 
-    assign uo_out[7] = 0;
-
+    reg [5:0] inputs_s = 6'b000000;
 
     // status register
-    reg [6:0] status;
+    reg [7:0] status;
+
+    // inputs
+
     
     // random number
     wire [7:0] random_number;
@@ -39,24 +43,28 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     assign uio_out = status;
 
 
+    // tamagotchi's animation
+
     // call stats module
     stats stats(
         .clk(clk),
         .random(random_number),
-        .reset(reset),
+        .second(second),
         .hunger(hunger),
         .happiness(happiness),
         .health(health),
         .hygiene(hygiene),
         .energy(energy),
         .social(social),
-        .inputs(ui_in)
+        .inputs(dataIn),
+        .reset(reset)
     );
 
     // call states module
     states states(
         .clk(clk),
         .hunger(hunger),
+        .reset(reset),
         .happiness(happiness),
         .health(health),
         .hygiene(hygiene),
@@ -75,11 +83,19 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     // call uart module
     uart uart(
         .clk(clk),
-        .uart_rx(ui_in[0]),
-        .uart_tx(uo_out[0]),
-        .led(uo_out[6:1]),
-        .btn1(ui_in[1]),
-        .ran_in(random_number)
+        .uart_rx(rx),
+        .uart_tx(tx),
+        .dataIn_R(dataIn),
+        .led(led_out_reg),
+        .status(status),
+        .btn1(second),
+        .ran_in(random_number),
+        .hunger(hunger),
+        .happiness(happiness),
+        .health(health),
+        .hygiene(hygiene),
+        .energy(energy),
+        .social(social)
     );
 
 endmodule
