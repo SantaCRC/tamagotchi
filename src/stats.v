@@ -24,7 +24,7 @@ module stats(
             hygiene <= 0;
             energy <= 0;
             social <= 0;
-            count <= 0; // Reiniciar el contador cuando se presiona el botón de reset
+            count = 0; // Reiniciar el contador cuando se presiona el botón de reset
         end else begin
             if (count == 28'd27000000) begin
                 count = 0;
