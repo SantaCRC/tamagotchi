@@ -18,13 +18,13 @@ module stats(
     always @(posedge clk or posedge reset) begin
         if (reset) begin
             // Reiniciar estadísticas en caso de reset
-            hunger = 0;
-            happiness = 0;
-            health = 0;
-            hygiene = 0;
-            energy = 0;
-            social = 0;
-            count = 0; // Reiniciar el contador cuando se presiona el botón de reset
+            hunger <= 0;
+            happiness <= 0;
+            health <= 0;
+            hygiene <= 0;
+            energy <= 0;
+            social <= 0;
+            count <= 0; // Reiniciar el contador cuando se presiona el botón de reset
         end else begin
             if (count == 28'd27000000) begin
                 count = 0;

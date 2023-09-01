@@ -42,10 +42,10 @@ always @(posedge clk) begin
     end
     // check if tamagotchi is ok
     else if (reset)begin
-        status = 8'b0000000;
+        status <= 8'b0000000;
     end
     else begin
-        status = 8'b0000000;
+        status <= 8'b0000000;
     end
 end
 
