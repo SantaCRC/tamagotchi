@@ -13,12 +13,6 @@ module stats(
 );
 
     reg [27:0] count = 0; // Contador de tiempo
-    reg second = 0; // Segundo de la animación
-    reg [3:0] hunger = 0; // Estadística de hambre
-    reg [3:0] health = 0; // Estadística de salud
-    reg [3:0] hygiene = 0; // Estadística de higiene
-    reg [3:0] energy = 0; // Estadística de energía
-    reg [3:0] social = 0; // Estadística social
     reg only_one = 0; // Bandera para evitar que se incrementen las estadísticas más de una vez por segundo
 
     always @(posedge clk or posedge reset) begin

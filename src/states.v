@@ -1,19 +1,20 @@
 // module to generate tamagotchi's states
 module states (
     input wire clk,
+    input wire reset,
     input wire [3:0] hunger,
     input wire [3:0] happiness,
     input wire [3:0] health,
     input wire [3:0] hygiene,
     input wire [3:0] energy,
     input wire [3:0] social,
-    output reg [6:0] status    
+    output reg [7:0] status    
 );
 
 // check if tamagotchi is dead or it have any needs
 always @(posedge clk) begin
-    if (hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15) begin
-        status <= 7'b1111111;
+    if (hunger == 4'd15) begin
+        status <= 8'b11111111;
     end
     // check if tamagotchi is hungry
     else if (hunger >= 4'd12) begin
@@ -40,8 +41,11 @@ always @(posedge clk) begin
         status[5] <= 1'b1;
     end
     // check if tamagotchi is ok
+    else if (reset)begin
+        status = 8'b0000000;
+    end
     else begin
-        status <= 7'b0000000;
+        status = 8'b0000000;
     end
 end
 
