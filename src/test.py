@@ -49,7 +49,10 @@ async def status(dut):
     else:
         for i in range(10):
             await Timer(0.1, units='sec')
-            dut._log.info("status: %d" % dut.status.value)
+            try:
+                dut._log.info("status: %d" % dut.status.value)
+            except:
+                pass
             await ClockCycles(dut.clk, 1)
             ini = random.randint(0, 3)
             dut.ui_in[ini].value = 1
