@@ -49,6 +49,23 @@ module stats(
                 happiness <= (happiness > 0) ? happiness - 1 : happiness;
                 only_one = 1;
             end
+            8'h68: begin // 'd' command (e.g., drink)
+                health <= (health > 0) ? health - 1 : health;
+                only_one = 1;
+            end
+            8'h68: begin // 'd' command (e.g., drink)
+                hygiene <= (hygiene > 0) ? hygiene - 1 : hygiene;
+                only_one = 1;
+            end
+            8'h6c: begin // 'l' command (e.g., love)
+                energy <= (energy > 0) ? energy - 1 : energy;
+                only_one = 1;
+            end
+            8'h6c: begin // 'l' command (e.g., love)
+                social <= (social > 0) ? social - 1 : social;
+                only_one = 1;
+            end
+            
             // Add more cases for other UART commands
             endcase
         end
