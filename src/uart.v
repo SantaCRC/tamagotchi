@@ -12,10 +12,12 @@ module uart
     output reg [5:0] led,
     input btn1,
     input wire [7:0] ran_in,
-    input wire [4:0] hunger,
-    input wire [4:0] happiness,
-    input wire [4:0] hygiene,
-    input wire [4:0] energy,
+    input wire [3:0] hunger,
+    input wire [3:0] happiness,
+    input wire [3:0] health,
+    input wire [3:0] hygiene,
+    input wire [3:0] energy,
+    input wire [3:0] social,
     output reg [7:0] dataIn_R,
     input wire is_sleeping
 );
@@ -87,51 +89,55 @@ reg [7:0] txByteCounter = 0;
 
 assign uart_tx = txPinRegister;
 
-localparam MEMORY_LENGTH = 31;
-reg [7:0] mem [MEMORY_LENGTH-1:0];
+localparam MEMORY_LENGTH = 40;
+reg [7:0] testMemory [MEMORY_LENGTH-1:0];
 
 // (\__/)
 // (>'.'<)
 // (")_(")
 
 initial begin
-    mem[0] = "(";
-    mem[1] = "\\";
-    mem[2] = "_";
-    mem[3] = "_";
-    mem[4] = "/";
-    mem[5] = ")";
-    mem[6] = "\r";  
-    mem[7] = "\n";
-    mem[8] = "(";
-    mem[9] = ">";
-    mem[10] = "'";
-    mem[11] = ".";
-    mem[12] = "'";
-    mem[13] = "<";
-    mem[14] = ")";
-    mem[15] = "\r";
-    mem[16] = "\n";
-    mem[17] = "(";
-    mem[18] = "\"";
-    mem[19] = ")";
-    mem[20] = "_";
-    mem[21] = "(";
-    mem[22] = "\"";
-    mem[23] = ")";
-    mem[24] = "\r";
-    mem[25] = "\n";
-    mem[26] = "N";
-    mem[27] = "E";
-    mem[28] = "E";
-    mem[29] = "D";
-    mem[30] = "S";
-    mem[31] = "\r";
-    mem[32] = "\n";
-    mem[33] = " ";
-    mem[34] = " ";
-    mem[35] = " ";
-    mem[36] = " ";
+    testMemory[0] = "(";
+    testMemory[1] = "\\";
+    testMemory[2] = "_";
+    testMemory[3] = "_";
+    testMemory[4] = "/";
+    testMemory[5] = ")";
+    testMemory[6] = "\r";  
+    testMemory[7] = "\n";
+    testMemory[8] = "(";
+    testMemory[9] = ">";
+    testMemory[10] = "'";
+    testMemory[11] = ".";
+    testMemory[12] = "'";
+    testMemory[13] = "<";
+    testMemory[14] = ")";
+    testMemory[15] = "\r";
+    testMemory[16] = "\n";
+    testMemory[17] = "(";
+    testMemory[18] = "\"";
+    testMemory[19] = ")";
+    testMemory[20] = "_";
+    testMemory[21] = "(";
+    testMemory[22] = "\"";
+    testMemory[23] = ")";
+    testMemory[24] = "\r";
+    testMemory[25] = "\n";
+    testMemory[26] = "S";
+    testMemory[27] = "T";
+    testMemory[28] = "A";
+    testMemory[29] = "T";
+    testMemory[30] = "S";
+    testMemory[31] = "\r";
+    testMemory[32] = "\n";
+    testMemory[33] = "-";
+    testMemory[34] = "-";
+    testMemory[35] = "-";
+    testMemory[36] = "-";
+    testMemory[37] = "-";
+    testMemory[38] = "\r";
+    testMemory[39] = "\n";
+
 end
 
 localparam TX_STATE_IDLE = 0;
@@ -141,33 +147,46 @@ localparam TX_STATE_STOP_BIT = 3;
 localparam TX_STATE_DEBOUNCE = 4;
 
 always @(posedge clk) begin
+    testMemory[10] = "'";
+    testMemory[12] = "'";
+
     if (is_sleeping == 1) begin
-        mem[10] = "Z";
-        mem[12] = "Z";
+        testMemory[10] = "Z";
+        testMemory[12] = "Z";
+    end
+    if (!is_sleeping && social > 4'd9) begin
+        testMemory[10] = "-";
+        testMemory[12] = "-";
+        testMemory[33] = "S";
     end
     if (!is_sleeping && happiness > 4'd9) begin
-        mem[10] = "T";
-        mem[12] = "T";
-        mem[33] = "P";
-    end
-    if (!is_sleeping && energy > 4'd9) begin
-        mem[10] = "O";
-        mem[12] = "O";
-        mem[34] = "S";
-    end
-    if (!is_sleeping && hunger > 4'd9) begin
-        mem[10] = "@";
-        mem[12] = "@";
-        mem[35] = "E";
+        testMemory[10] = "T";
+        testMemory[12] = "T";
+        testMemory[34] = "P";
     end
     if (!is_sleeping && hygiene > 4'd9) begin
-        mem[10] = "U";
-        mem[12] = "U";
-        mem[36] = "D";       
+        testMemory[10] = "%";
+        testMemory[12] = "%";
+        testMemory[35] = "B";
     end
-    if(hunger == 4'd15 || happiness == 4'd15 || hygiene == 4'd15 || energy == 4'd15) begin
-        mem[10] = "X";
-        mem[12] = "X";
+    if (!is_sleeping && energy > 4'd9) begin
+        testMemory[10] = "O";
+        testMemory[12] = "O";
+        testMemory[36] = "S";
+    end
+    if (!is_sleeping && health > 4'd9) begin
+        testMemory[10] = "~";
+        testMemory[12] = "~";
+        testMemory[37] = "D";
+    end 
+    if (!is_sleeping && hunger > 4'd9) begin
+        testMemory[10] = "@";
+        testMemory[12] = "@";
+        testMemory[38] = "E";
+    end
+    if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15 || social == 4'd15) begin
+        testMemory[10] = "X";
+        testMemory[12] = "X";
     end
 
 
@@ -186,7 +205,7 @@ always @(posedge clk) begin
             txPinRegister <= 0;
             if ((txCounter + 1) == DELAY_FRAMES) begin
                 txState <= TX_STATE_WRITE;
-                dataOut <= mem[txByteCounter];
+                dataOut <= testMemory[txByteCounter];
                 txBitNumber <= 0;
                 txCounter <= 0;
             end else 

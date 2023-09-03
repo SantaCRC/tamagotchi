@@ -28,9 +28,6 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
 
     reg [5:0] inputs_s = 6'b000000;
 
-    // status register
-    reg [7:0] status;
-
     // inputs
 
     
@@ -74,7 +71,6 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
         .uart_tx(tx),
         .dataIn_R(dataIn),
         .led(led_out_reg),
-        .status(status),
         .btn1(second),
         .ran_in(random_number),
         .hunger(hunger),
