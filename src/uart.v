@@ -14,7 +14,6 @@ module uart
     input wire [7:0] ran_in,
     input wire [4:0] hunger,
     input wire [4:0] happiness,
-    input wire [4:0] health,
     input wire [4:0] hygiene,
     input wire [4:0] energy,
     output reg [7:0] dataIn_R,
@@ -367,81 +366,6 @@ always @(posedge clk) begin
     end
 endcase
 
-    // case health
-    case (15-health)
-    4'd0: begin
-        testMemory[53] = "0";
-        testMemory[54] = "0";
-    end
-    4'd1: begin
-        testMemory[53] = "0";
-        testMemory[54] = "1";
-    end
-    4'd2: begin
-        testMemory[53] = "0";
-        testMemory[54] = "2";
-    end
-    4'd3: begin
-        testMemory[53] = "0";
-        testMemory[54] = "3";
-    end
-    4'd4: begin
-        testMemory[53] = "0";
-        testMemory[54] = "4";
-    end
-    4'd5: begin
-        testMemory[53] = "0";
-        testMemory[54] = "5";
-    end
-    4'd6: begin
-        testMemory[53] = "0";
-        testMemory[54] = "6";
-    end
-    4'd7: begin
-        testMemory[53] = "0";
-        testMemory[54] = "7";
-    end
-    4'd8: begin
-        testMemory[53] = "0";
-        testMemory[54] = "8";
-    end
-    4'd9: begin
-        testMemory[53] = "0";
-        testMemory[54] = "9";
-    end
-    4'd10: begin
-        testMemory[53] = "1";
-        testMemory[54] = "0";
-    end
-    4'd11: begin
-        testMemory[53] = "1";
-        testMemory[54] = "1";
-    end
-    4'd12: begin
-        testMemory[53] = "1";
-        testMemory[54] = "2";
-    end
-    4'd13: begin
-        testMemory[53] = "1";
-        testMemory[54] = "3";
-    end
-    4'd14: begin
-        testMemory[53] = "1";
-        testMemory[54] = "4";
-    end
-    4'd15: begin
-        testMemory[53] = "1";
-        testMemory[54] = "5";
-        
-        
-    end
-    default: begin
-        testMemory[53] = "0";
-        testMemory[54] = "0";
-    end
-
-    endcase
-
     // case hygiene
     case (15-hygiene)
     4'd0: begin
@@ -593,7 +517,19 @@ endcase
         testMemory[10] = "Z";
         testMemory[12] = "Z";
     end
-    if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15) begin
+    if (!is_sleeping && happiness > 4'd9) begin
+        testMemory[10] = "T";
+        testMemory[12] = "T";
+    end
+    if (!is_sleeping && energy > 4'd9) begin
+        testMemory[10] = "O";
+        testMemory[12] = "O";
+    end
+    if (!is_sleeping && hunger > 4'd9) begin
+        testMemory[10] = "@";
+        testMemory[12] = "@";
+    end
+    if(hunger == 4'd15 || happiness == 4'd15 || hygiene == 4'd15 || energy == 4'd15) begin
         testMemory[10] = "X";
         testMemory[12] = "X";
     end
