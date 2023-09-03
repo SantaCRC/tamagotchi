@@ -178,331 +178,331 @@ localparam TX_STATE_STOP_BIT = 3;
 localparam TX_STATE_DEBOUNCE = 4;
 
 always @(posedge clk) begin
-    // case hunger
-    case (hunger)
-        4'd0: begin
+//     // case hunger
+//     case (hunger)
+//         4'd0: begin
             
             
-            mem[37] = "0";
-            mem[38] = "0";
-        end
-        4'd1: begin
+//             mem[37] = "0";
+//             mem[38] = "0";
+//         end
+//         4'd1: begin
             
             
-            mem[37] = "0";
-            mem[38] = "1";
-        end
-        4'd2: begin
+//             mem[37] = "0";
+//             mem[38] = "1";
+//         end
+//         4'd2: begin
             
             
-            mem[37] = "0";
-            mem[38] = "2";
-        end
-        4'd3: begin
+//             mem[37] = "0";
+//             mem[38] = "2";
+//         end
+//         4'd3: begin
             
             
-            mem[37] = "0";
-            mem[38] = "3";
-        end
-        4'd4: begin
+//             mem[37] = "0";
+//             mem[38] = "3";
+//         end
+//         4'd4: begin
             
             
-            mem[37] = "0";
-            mem[38] = "4";
-        end
-        4'd5: begin
+//             mem[37] = "0";
+//             mem[38] = "4";
+//         end
+//         4'd5: begin
             
             
-            mem[37] = "0";
-            mem[38] = "5";
-        end
-        4'd6: begin
+//             mem[37] = "0";
+//             mem[38] = "5";
+//         end
+//         4'd6: begin
             
             
-            mem[37] = "0";
-            mem[38] = "6";
-        end
-        4'd7: begin
+//             mem[37] = "0";
+//             mem[38] = "6";
+//         end
+//         4'd7: begin
             
             
-            mem[37] = "0";
-            mem[38] = "7";
-        end
-        4'd8: begin
+//             mem[37] = "0";
+//             mem[38] = "7";
+//         end
+//         4'd8: begin
             
             
-            mem[37] = "0";
-            mem[38] = "8";
-        end
-        4'd9: begin
+//             mem[37] = "0";
+//             mem[38] = "8";
+//         end
+//         4'd9: begin
             
             
-            mem[37] = "0";
-            mem[38] = "9";
-        end
-        4'd10: begin
+//             mem[37] = "0";
+//             mem[38] = "9";
+//         end
+//         4'd10: begin
             
             
-            mem[37] = "1";
-            mem[38] = "0";
-        end
-        4'd11: begin
+//             mem[37] = "1";
+//             mem[38] = "0";
+//         end
+//         4'd11: begin
             
             
-            mem[37] = "1";
-            mem[38] = "1";
-        end
-        4'd12: begin
+//             mem[37] = "1";
+//             mem[38] = "1";
+//         end
+//         4'd12: begin
             
             
-            mem[37] = "1";
-            mem[38] = "2";
-        end
-        4'd13: begin
+//             mem[37] = "1";
+//             mem[38] = "2";
+//         end
+//         4'd13: begin
             
             
-            mem[37] = "1";
-            mem[38] = "3";
-        end
-        4'd14: begin
+//             mem[37] = "1";
+//             mem[38] = "3";
+//         end
+//         4'd14: begin
             
             
-            mem[37] = "1";
-            mem[38] = "4";
-        end
-        4'd15: begin
-            mem[37] = "1";
-            mem[38] = "5";
+//             mem[37] = "1";
+//             mem[38] = "4";
+//         end
+//         4'd15: begin
+//             mem[37] = "1";
+//             mem[38] = "5";
             
             
-        end
-        default: begin
-            mem[37] = "0";
-            mem[38] = "0";
-        end
-    endcase
+//         end
+//         default: begin
+//             mem[37] = "0";
+//             mem[38] = "0";
+//         end
+//     endcase
 
-    // case happiness
-    case (happiness)
-    4'd0: begin
-        mem[45] = "0";
-        mem[46] = "0";
-    end
-    4'd1: begin
-        mem[45] = "0";
-        mem[46] = "1";
-    end
-    4'd2: begin
-        mem[45] = "0";
-        mem[46] = "2";
-    end
-    4'd3: begin
-        mem[45] = "0";
-        mem[46] = "3";
-    end
-    4'd4: begin
-        mem[45] = "0";
-        mem[46] = "4";
-    end
-    4'd5: begin
-        mem[45] = "0";
-        mem[46] = "5";
-    end
-    4'd6: begin
-        mem[45] = "0";
-        mem[46] = "6";
-    end
-    4'd7: begin
-        mem[45] = "0";
-        mem[46] = "7";
-    end
-    4'd8: begin
-        mem[45] = "0";
-        mem[46] = "8";
-    end
-    4'd9: begin
-        mem[45] = "0";
-        mem[46] = "9";
-    end
-    4'd10: begin
-        mem[45] = "1";
-        mem[46] = "0";
-    end
-    4'd11: begin
-        mem[45] = "1";
-        mem[46] = "1";
-    end
-    4'd12: begin
-        mem[45] = "1";
-        mem[46] = "2";
-    end
-    4'd13: begin
-        mem[45] = "1";
-        mem[46] = "3";
-    end
-    4'd14: begin
-        mem[45] = "1";
-        mem[46] = "4";
-    end
-    4'd15: begin
-        mem[45] = "1";
-        mem[46] = "5";
+//     // case happiness
+//     case (15-happiness)
+//     4'd0: begin
+//         mem[45] = "0";
+//         mem[46] = "0";
+//     end
+//     4'd1: begin
+//         mem[45] = "0";
+//         mem[46] = "1";
+//     end
+//     4'd2: begin
+//         mem[45] = "0";
+//         mem[46] = "2";
+//     end
+//     4'd3: begin
+//         mem[45] = "0";
+//         mem[46] = "3";
+//     end
+//     4'd4: begin
+//         mem[45] = "0";
+//         mem[46] = "4";
+//     end
+//     4'd5: begin
+//         mem[45] = "0";
+//         mem[46] = "5";
+//     end
+//     4'd6: begin
+//         mem[45] = "0";
+//         mem[46] = "6";
+//     end
+//     4'd7: begin
+//         mem[45] = "0";
+//         mem[46] = "7";
+//     end
+//     4'd8: begin
+//         mem[45] = "0";
+//         mem[46] = "8";
+//     end
+//     4'd9: begin
+//         mem[45] = "0";
+//         mem[46] = "9";
+//     end
+//     4'd10: begin
+//         mem[45] = "1";
+//         mem[46] = "0";
+//     end
+//     4'd11: begin
+//         mem[45] = "1";
+//         mem[46] = "1";
+//     end
+//     4'd12: begin
+//         mem[45] = "1";
+//         mem[46] = "2";
+//     end
+//     4'd13: begin
+//         mem[45] = "1";
+//         mem[46] = "3";
+//     end
+//     4'd14: begin
+//         mem[45] = "1";
+//         mem[46] = "4";
+//     end
+//     4'd15: begin
+//         mem[45] = "1";
+//         mem[46] = "5";
         
         
-    end
-    default: begin
-        mem[45] = "0";
-        mem[46] = "0";
-    end
-endcase
+//     end
+//     default: begin
+//         mem[45] = "0";
+//         mem[46] = "0";
+//     end
+// endcase
 
-    // case hygiene
-    case (hygiene)
-    4'd0: begin
-        mem[61] = "0";
-        mem[62] = "0";
-    end
-    4'd1: begin
-        mem[61] = "0";
-        mem[62] = "1";
-    end
-    4'd2: begin
-        mem[61] = "0";
-        mem[62] = "2";
-    end
-    4'd3: begin
-        mem[61] = "0";
-        mem[62] = "3";
-    end
-    4'd4: begin
-        mem[61] = "0";
-        mem[62] = "4";
-    end
-    4'd5: begin
-        mem[61] = "0";
-        mem[62] = "5";
-    end
-    4'd6: begin
-        mem[61] = "0";
-        mem[62] = "6";
-    end
-    4'd7: begin
-        mem[61] = "0";
-        mem[62] = "7";
-    end
-    4'd8: begin
-        mem[61] = "0";
-        mem[62] = "8";
-    end
-    4'd9: begin
-        mem[61] = "0";
-        mem[62] = "9";
-    end
-    4'd10: begin
-        mem[61] = "1";
-        mem[62] = "0";
-    end
-    4'd11: begin
-        mem[61] = "1";
-        mem[62] = "1";
-    end
-    4'd12: begin
-        mem[61] = "1";
-        mem[62] = "2";
-    end
-    4'd13: begin
-        mem[61] = "1";
-        mem[62] = "3";
-    end
-    4'd14: begin
-        mem[61] = "1";
-        mem[62] = "4";
-    end
-    4'd15: begin
-        mem[61] = "1";
-        mem[62] = "5";
+//     // case hygiene
+//     case (15-hygiene)
+//     4'd0: begin
+//         mem[61] = "0";
+//         mem[62] = "0";
+//     end
+//     4'd1: begin
+//         mem[61] = "0";
+//         mem[62] = "1";
+//     end
+//     4'd2: begin
+//         mem[61] = "0";
+//         mem[62] = "2";
+//     end
+//     4'd3: begin
+//         mem[61] = "0";
+//         mem[62] = "3";
+//     end
+//     4'd4: begin
+//         mem[61] = "0";
+//         mem[62] = "4";
+//     end
+//     4'd5: begin
+//         mem[61] = "0";
+//         mem[62] = "5";
+//     end
+//     4'd6: begin
+//         mem[61] = "0";
+//         mem[62] = "6";
+//     end
+//     4'd7: begin
+//         mem[61] = "0";
+//         mem[62] = "7";
+//     end
+//     4'd8: begin
+//         mem[61] = "0";
+//         mem[62] = "8";
+//     end
+//     4'd9: begin
+//         mem[61] = "0";
+//         mem[62] = "9";
+//     end
+//     4'd10: begin
+//         mem[61] = "1";
+//         mem[62] = "0";
+//     end
+//     4'd11: begin
+//         mem[61] = "1";
+//         mem[62] = "1";
+//     end
+//     4'd12: begin
+//         mem[61] = "1";
+//         mem[62] = "2";
+//     end
+//     4'd13: begin
+//         mem[61] = "1";
+//         mem[62] = "3";
+//     end
+//     4'd14: begin
+//         mem[61] = "1";
+//         mem[62] = "4";
+//     end
+//     4'd15: begin
+//         mem[61] = "1";
+//         mem[62] = "5";
         
         
-    end
-    default: begin
-        mem[61] = "0";
-        mem[62] = "0";
-    end
-    endcase
+//     end
+//     default: begin
+//         mem[61] = "0";
+//         mem[62] = "0";
+//     end
+//     endcase
 
-    // case energy
-    case (energy)
-    4'd0: begin
-        mem[68] = "0";
-        mem[69] = "0";
-    end
-    4'd1: begin
-        mem[68] = "0";
-        mem[69] = "1";
-    end
-    4'd2: begin
-        mem[68] = "0";
-        mem[69] = "2";
-    end
-    4'd3: begin
-        mem[68] = "0";
-        mem[69] = "3";
-    end
-    4'd4: begin
-        mem[68] = "0";
-        mem[69] = "4";
-    end
-    4'd5: begin
-        mem[68] = "0";
-        mem[69] = "5";
-    end
-    4'd6: begin
-        mem[68] = "0";
-        mem[69] = "6";
-    end
-    4'd7: begin
-        mem[68] = "0";
-        mem[69] = "7";
-    end
-    4'd8: begin
-        mem[68] = "0";
-        mem[69] = "8";
-    end
-    4'd9: begin
-        mem[68] = "0";
-        mem[69] = "9";
-    end
-    4'd10: begin
-        mem[68] = "1";
-        mem[69] = "0";
-    end
-    4'd11: begin
-        mem[68] = "1";
-        mem[69] = "1";
-    end
-    4'd12: begin
-        mem[68] = "1";
-        mem[69] = "2";
-    end
-    4'd13: begin
-        mem[68] = "1";
-        mem[69] = "3";
-    end
-    4'd14: begin
-        mem[68] = "1";
-        mem[69] = "4";
-    end
-    4'd15: begin
-        mem[68] = "1";
-        mem[69] = "5";
+//     // case energy
+//     case (15-energy)
+//     4'd0: begin
+//         mem[68] = "0";
+//         mem[69] = "0";
+//     end
+//     4'd1: begin
+//         mem[68] = "0";
+//         mem[69] = "1";
+//     end
+//     4'd2: begin
+//         mem[68] = "0";
+//         mem[69] = "2";
+//     end
+//     4'd3: begin
+//         mem[68] = "0";
+//         mem[69] = "3";
+//     end
+//     4'd4: begin
+//         mem[68] = "0";
+//         mem[69] = "4";
+//     end
+//     4'd5: begin
+//         mem[68] = "0";
+//         mem[69] = "5";
+//     end
+//     4'd6: begin
+//         mem[68] = "0";
+//         mem[69] = "6";
+//     end
+//     4'd7: begin
+//         mem[68] = "0";
+//         mem[69] = "7";
+//     end
+//     4'd8: begin
+//         mem[68] = "0";
+//         mem[69] = "8";
+//     end
+//     4'd9: begin
+//         mem[68] = "0";
+//         mem[69] = "9";
+//     end
+//     4'd10: begin
+//         mem[68] = "1";
+//         mem[69] = "0";
+//     end
+//     4'd11: begin
+//         mem[68] = "1";
+//         mem[69] = "1";
+//     end
+//     4'd12: begin
+//         mem[68] = "1";
+//         mem[69] = "2";
+//     end
+//     4'd13: begin
+//         mem[68] = "1";
+//         mem[69] = "3";
+//     end
+//     4'd14: begin
+//         mem[68] = "1";
+//         mem[69] = "4";
+//     end
+//     4'd15: begin
+//         mem[68] = "1";
+//         mem[69] = "5";
         
         
-    end
-    default: begin
-        mem[68] = "0";
-        mem[69] = "0";
-    end
-    endcase
+//     end
+//     default: begin
+//         mem[68] = "0";
+//         mem[69] = "0";
+//     end
+//     endcase
     if (is_sleeping == 1) begin
         mem[10] = "Z";
         mem[12] = "Z";
