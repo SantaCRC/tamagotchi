@@ -283,7 +283,7 @@ always @(posedge clk) begin
     endcase
 
     // case happiness
-    case (15-happiness)
+    case (happiness)
     4'd0: begin
         mem[45] = "0";
         mem[46] = "0";
@@ -357,7 +357,7 @@ always @(posedge clk) begin
 endcase
 
     // case hygiene
-    case (15-hygiene)
+    case (hygiene)
     4'd0: begin
         mem[61] = "0";
         mem[62] = "0";
@@ -431,7 +431,7 @@ endcase
     endcase
 
     // case energy
-    case (15-energy)
+    case (energy)
     4'd0: begin
         mem[68] = "0";
         mem[69] = "0";
