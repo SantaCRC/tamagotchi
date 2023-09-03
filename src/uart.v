@@ -17,7 +17,6 @@ module uart
     input wire [4:0] health,
     input wire [4:0] hygiene,
     input wire [4:0] energy,
-    input wire [4:0] social,
     output reg [7:0] dataIn_R,
     input wire is_sleeping
 );
@@ -590,85 +589,9 @@ endcase
         testMemory[69] = "0";
     end
     endcase
-    // case social
-    case (15-social)
-    4'd0: begin
-        testMemory[76] = "0";
-        testMemory[77] = "0";
-    end
-    4'd1: begin
-        testMemory[76] = "0";
-        testMemory[77] = "1";
-    end
-    4'd2: begin
-        testMemory[76] = "0";
-        testMemory[77] = "2";
-    end
-    4'd3: begin
-        testMemory[76] = "0";
-        testMemory[77] = "3";
-    end
-    4'd4: begin
-        testMemory[76] = "0";
-        testMemory[77] = "4";
-    end
-    4'd5: begin
-        testMemory[76] = "0";
-        testMemory[77] = "5";
-    end
-    4'd6: begin
-        testMemory[76] = "0";
-        testMemory[77] = "6";
-    end
-    4'd7: begin
-        testMemory[76] = "0";
-        testMemory[77] = "7";
-    end
-    4'd8: begin
-        testMemory[76] = "0";
-        testMemory[77] = "8";
-    end
-    4'd9: begin
-        testMemory[76] = "0";
-        testMemory[77] = "9";
-    end
-    4'd10: begin
-        testMemory[76] = "1";
-        testMemory[77] = "0";
-    end
-    4'd11: begin
-        testMemory[76] = "1";
-        testMemory[77] = "1";
-    end
-    4'd12: begin
-        testMemory[76] = "1";
-        testMemory[77] = "2";
-    end
-    4'd13: begin
-        testMemory[76] = "1";
-        testMemory[77] = "3";
-    end
-    4'd14: begin
-        testMemory[76] = "1";
-        testMemory[77] = "4";
-    end
-    4'd15: begin
-        testMemory[76] = "1";
-        testMemory[77] = "5";     
-    end
-    default: begin
-        testMemory[76] = "0";
-        testMemory[77] = "0";
-    end
-    endcase
-
     if (is_sleeping == 1) begin
         testMemory[10] = "Z";
         testMemory[12] = "Z";
-    end
-    if (!is_sleeping && social > 4'd9) begin
-        testMemory[10] = "-";
-        testMemory[12] = "-";
     end
     if (!is_sleeping && happiness > 4'd9) begin
         testMemory[10] = "T";
@@ -690,7 +613,7 @@ endcase
         testMemory[10] = "@";
         testMemory[12] = "@";
     end
-    if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15 || social == 4'd15) begin
+    if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15) begin
         testMemory[10] = "X";
         testMemory[12] = "X";
     end
