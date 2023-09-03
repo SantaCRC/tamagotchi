@@ -14,7 +14,6 @@ module uart
     input wire [7:0] ran_in,
     input wire [4:0] hunger,
     input wire [4:0] happiness,
-    input wire [4:0] health,
     input wire [4:0] hygiene,
     input wire [4:0] energy,
     input wire [4:0] social,
@@ -181,17 +180,12 @@ always @(posedge clk) begin
         testMemory[12] = "O";
         testMemory[36] = "S";
     end
-    if (!is_sleeping && health > 4'd9) begin
-        testMemory[10] = "~";
-        testMemory[12] = "~";
-        testMemory[37] = "D";
-    end 
     if (!is_sleeping && hunger > 4'd9) begin
         testMemory[10] = "@";
         testMemory[12] = "@";
         testMemory[38] = "E";
     end
-    if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15 || social == 4'd15) begin
+    if(hunger == 4'd15 || happiness == 4'd15 || hygiene == 4'd15 || energy == 4'd15 || social == 4'd15) begin
         testMemory[10] = "X";
         testMemory[12] = "X";
     end
