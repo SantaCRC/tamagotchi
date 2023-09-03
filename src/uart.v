@@ -676,10 +676,10 @@ endcase
         testMemory[10] = "T";
         testMemory[12] = "T";
     end
-    if (!is_sleeping && hygiene > 4'd9) begin
-        testMemory[10] = "%";
-        testMemory[12] = "%";
-    end
+    // if (!is_sleeping && hygiene > 4'd9) begin
+    //     testMemory[10] = "%";
+    //     testMemory[12] = "%";
+    // end
     if (!is_sleeping && energy > 4'd9) begin
         testMemory[10] = "O";
         testMemory[12] = "O";
