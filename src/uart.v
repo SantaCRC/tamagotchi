@@ -12,12 +12,12 @@ module uart
     output reg [5:0] led,
     input btn1,
     input wire [7:0] ran_in,
-    input wire [4:0] hunger,
-    input wire [4:0] happiness,
-    input wire [4:0] health,
-    input wire [4:0] hygiene,
-    input wire [4:0] energy,
-    input wire [4:0] social,
+    input wire [3:0] hunger,
+    input wire [3:0] happiness,
+    input wire [3:0] health,
+    input wire [3:0] hygiene,
+    input wire [3:0] energy,
+    input wire [3:0] social,
     output reg [7:0] dataIn_R,
     input wire is_sleeping
 );
@@ -193,92 +193,92 @@ always @(posedge clk) begin
     // case hunger
     case (hunger)
         4'd0: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "0";
             testMemory[38] = "0";
         end
         4'd1: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "0";
             testMemory[38] = "1";
         end
         4'd2: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "0";
             testMemory[38] = "2";
         end
         4'd3: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "0";
             testMemory[38] = "3";
         end
         4'd4: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "0";
             testMemory[38] = "4";
         end
         4'd5: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "0";
             testMemory[38] = "5";
         end
         4'd6: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "0";
             testMemory[38] = "6";
         end
         4'd7: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "0";
             testMemory[38] = "7";
         end
         4'd8: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "0";
             testMemory[38] = "8";
         end
         4'd9: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "0";
             testMemory[38] = "9";
         end
         4'd10: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "1";
             testMemory[38] = "0";
         end
         4'd11: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "1";
             testMemory[38] = "1";
         end
         4'd12: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "1";
             testMemory[38] = "2";
         end
         4'd13: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "1";
             testMemory[38] = "3";
         end
         4'd14: begin
-            
-            
+            testMemory[10] = "'";
+            testMemory[12] = "'";
             testMemory[37] = "1";
             testMemory[38] = "4";
         end
@@ -654,7 +654,9 @@ endcase
     end
     4'd15: begin
         testMemory[76] = "1";
-        testMemory[77] = "5";     
+        testMemory[77] = "5";
+        
+        
     end
     default: begin
         testMemory[76] = "0";
@@ -662,34 +664,34 @@ endcase
     end
     endcase
 
-    // if (is_sleeping == 1) begin
-    //     testMemory[10] = "Z";
-    //     testMemory[12] = "Z";
-    // end
-    // if (!is_sleeping && social > 4'd9) begin
-    //     testMemory[10] = "-";
-    //     testMemory[12] = "-";
-    // end
-    // if (!is_sleeping && happiness > 4'd9) begin
-    //     testMemory[10] = "T";
-    //     testMemory[12] = "T";
-    // end
-    // // if (!is_sleeping && hygiene > 4'd9) begin
-    // //     testMemory[10] = "%";
-    // //     testMemory[12] = "%";
-    // // end
-    // if (!is_sleeping && energy > 4'd9) begin
-    //     testMemory[10] = "O";
-    //     testMemory[12] = "O";
-    // end
-    // if (!is_sleeping && health > 4'd9) begin
-    //     testMemory[10] = "~";
-    //     testMemory[12] = "~";
-    // end 
-    // if (!is_sleeping && hunger > 4'd9) begin
-    //     testMemory[10] = "@";
-    //     testMemory[12] = "@";
-    // end
+    if (is_sleeping == 1) begin
+        testMemory[10] = "Z";
+        testMemory[12] = "Z";
+    end
+    if (!is_sleeping && social > 4'd9) begin
+        testMemory[10] = "-";
+        testMemory[12] = "-";
+    end
+    if (!is_sleeping && happiness > 4'd9) begin
+        testMemory[10] = "T";
+        testMemory[12] = "T";
+    end
+    if (!is_sleeping && hygiene > 4'd9) begin
+        testMemory[10] = "%";
+        testMemory[12] = "%";
+    end
+    if (!is_sleeping && energy > 4'd9) begin
+        testMemory[10] = "O";
+        testMemory[12] = "O";
+    end
+    if (!is_sleeping && health > 4'd9) begin
+        testMemory[10] = "~";
+        testMemory[12] = "~";
+    end 
+    if (!is_sleeping && hunger > 4'd9) begin
+        testMemory[10] = "@";
+        testMemory[12] = "@";
+    end
     if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15 || social == 4'd15) begin
         testMemory[10] = "X";
         testMemory[12] = "X";
