@@ -12,12 +12,12 @@ module uart
     output reg [5:0] led,
     input btn1,
     input wire [7:0] ran_in,
-    input wire [3:0] hunger,
-    input wire [3:0] happiness,
-    input wire [3:0] health,
-    input wire [3:0] hygiene,
-    input wire [3:0] energy,
-    input wire [3:0] social,
+    input wire [4:0] hunger,
+    input wire [4:0] happiness,
+    input wire [4:0] health,
+    input wire [4:0] hygiene,
+    input wire [4:0] energy,
+    input wire [4:0] social,
     output reg [7:0] dataIn_R,
     input wire is_sleeping
 );
