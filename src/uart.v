@@ -88,7 +88,7 @@ reg [7:0] txByteCounter = 0;
 
 assign uart_tx = txPinRegister;
 
-localparam MEMORY_LENGTH = 80;
+localparam MEMORY_LENGTH = 72;
 reg [7:0] mem [MEMORY_LENGTH-1:0];
 
 // (\__/)
@@ -168,16 +168,6 @@ initial begin
     mem[69] = "0";
     mem[70] = "\r";
     mem[71] = "\n";
-    mem[72] = "S";
-    mem[73] = "O";
-    mem[74] = ":";
-    mem[75] = " ";
-    mem[76] = "0";
-    mem[77] = "0";
-    mem[78] = "\r";
-    mem[79] = "\n";
-    // clear screen
-    mem[80] = "C";
 
 
 end
