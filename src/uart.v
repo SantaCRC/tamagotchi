@@ -593,26 +593,6 @@ endcase
         testMemory[10] = "Z";
         testMemory[12] = "Z";
     end
-    if (!is_sleeping && happiness > 4'd9) begin
-        testMemory[10] = "T";
-        testMemory[12] = "T";
-    end
-    // if (!is_sleeping && hygiene > 4'd9) begin
-    //     testMemory[10] = "%";
-    //     testMemory[12] = "%";
-    // end
-    if (!is_sleeping && energy > 4'd9) begin
-        testMemory[10] = "O";
-        testMemory[12] = "O";
-    end
-    if (!is_sleeping && health > 4'd9) begin
-        testMemory[10] = "~";
-        testMemory[12] = "~";
-    end 
-    if (!is_sleeping && hunger > 4'd9) begin
-        testMemory[10] = "@";
-        testMemory[12] = "@";
-    end
     if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15) begin
         testMemory[10] = "X";
         testMemory[12] = "X";
