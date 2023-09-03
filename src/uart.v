@@ -566,10 +566,6 @@ endcase
         mem[10] = "T";
         mem[12] = "T";
     end
-    if (!is_sleeping && hygiene > 4'd9) begin
-        mem[10] = "%";
-        mem[12] = "%";
-    end
     if (!is_sleeping && energy > 4'd9) begin
         mem[10] = "O";
         mem[12] = "O";
