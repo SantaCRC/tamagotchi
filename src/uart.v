@@ -135,8 +135,9 @@ initial begin
     testMemory[35] = "-";
     testMemory[36] = "-";
     testMemory[37] = "-";
-    testMemory[38] = "\r";
-    testMemory[39] = "\n";
+    testMemory[38] = "-";
+    testMemory[39] = "\r";
+    testMemory[40] = "\n";
 
 end
 
@@ -149,6 +150,12 @@ localparam TX_STATE_DEBOUNCE = 4;
 always @(posedge clk) begin
     testMemory[10] = "'";
     testMemory[12] = "'";
+    testMemory[33] = "-";
+    testMemory[34] = "-";
+    testMemory[35] = "-";
+    testMemory[36] = "-";
+    testMemory[37] = "-";
+    testMemory[38] = "-";
 
     if (is_sleeping == 1) begin
         testMemory[10] = "Z";
