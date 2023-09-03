@@ -2,12 +2,12 @@
 module states (
     input wire clk,
     input wire reset,
-    input wire [3:0] hunger,
+    input wire [4:0] hunger,
     input wire [4:0] happiness,
-    input wire [3:0] health,
-    input wire [3:0] hygiene,
-    input wire [3:0] energy,
-    input wire [3:0] social,
+    input wire [4:0] health,
+    input wire [4:0] hygiene,
+    input wire [4:0] energy,
+    input wire [4:0] social,
     output reg [7:0] status    
 );
 
