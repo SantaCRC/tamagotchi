@@ -193,92 +193,92 @@ always @(posedge clk) begin
     // case hunger
     case (hunger)
         4'd0: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "0";
             testMemory[38] = "0";
         end
         4'd1: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "0";
             testMemory[38] = "1";
         end
         4'd2: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "0";
             testMemory[38] = "2";
         end
         4'd3: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "0";
             testMemory[38] = "3";
         end
         4'd4: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "0";
             testMemory[38] = "4";
         end
         4'd5: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "0";
             testMemory[38] = "5";
         end
         4'd6: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "0";
             testMemory[38] = "6";
         end
         4'd7: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "0";
             testMemory[38] = "7";
         end
         4'd8: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "0";
             testMemory[38] = "8";
         end
         4'd9: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "0";
             testMemory[38] = "9";
         end
         4'd10: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "1";
             testMemory[38] = "0";
         end
         4'd11: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "1";
             testMemory[38] = "1";
         end
         4'd12: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "1";
             testMemory[38] = "2";
         end
         4'd13: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "1";
             testMemory[38] = "3";
         end
         4'd14: begin
-            testMemory[10] = "'";
-            testMemory[12] = "'";
+            
+            
             testMemory[37] = "1";
             testMemory[38] = "4";
         end
