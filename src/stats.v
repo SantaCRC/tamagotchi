@@ -19,19 +19,15 @@ module stats(
     always @(posedge clk or posedge reset) begin
         if (reset) begin
             // Reiniciar estadísticas en caso de reset
-            hunger <= 0;
-            happiness <= 0;
-            health <= 0;
-            hygiene <= 0;
-            energy <= 0;
-            count = 0; // Reiniciar el contador cuando se presiona el botón de reset
+            {hunger, happiness, health, hygiene, energy} <= 5'd0;
+            count <= 0; // Reiniciar el contador cuando se presiona el botón de reset
         end else begin
             if (count == 28'd27000000) begin
-                count = 0;
-                second = ~second; // Cambiar el segundo de la animación
+                count <= 0;
+                second <= ~second; // Cambiar el segundo de la animación
                 // Incrementar estadísticas aleatoriamente si no se presiona ninguna entrada
-                if (is_sleeping && second) begin
-                    energy <= (energy > 0) ? energy - 1 : energy;
+                if (is_sleeping && second && energy > 0) begin
+                    energy <= energy - 1;
                 end
                 case (random[2:0])
                     3'b001: hunger <= (hunger < 5'd15) ? hunger + 1 : hunger;
@@ -42,43 +38,34 @@ module stats(
                 endcase
             end
             if (!only_one && !is_sleeping && not_dead) begin
-            case (inputs)
-            8'h65: begin // 'e' command (e.g., eat)
-                hunger <= (hunger > 0) ? hunger - 1 : hunger;
-                only_one = 1;
+                case (inputs)
+                    8'h65: hunger <= (hunger > 0) ? hunger - 1 : hunger;
+                    8'h70: happiness <= (happiness > 0) ? happiness - 1 : happiness;
+                    8'h64: health <= (health > 0) ? health - 1 : health;
+                    8'h62: hygiene <= (hygiene > 0) ? hygiene - 1 : hygiene;
+                    8'h73: is_sleeping <= 1; // Activar la bandera para indicar que el Tamagotchi está durmiendo
+                endcase
+                only_one <= 1;
             end
-            8'h70: begin // 'p' command (e.g., play)
-                happiness <= (happiness > 0) ? happiness - 1 : happiness;
-                only_one = 1;
-            end
-            8'h64: begin // 'd' command (e.g., doctor)
-                health <= (health > 0) ? health - 1 : health;
-                only_one = 1;
-            end
-            8'h62: begin // 'b' command (e.g., bath)
-                hygiene <= (hygiene > 0) ? hygiene - 1 : hygiene;
-                only_one = 1;
-            end
-            8'h73: begin // 's' command (e.g., sleep)
-                is_sleeping = 1; // Activar la bandera para indicar que el Tamagotchi está durmiendo
-                only_one = 1;
-            end
-            endcase
         end
         if (inputs == 8'h00) begin
-            only_one = 0; // Reiniciar la bandera para permitir que se incrementen las estadísticas
+            only_one <= 0; // Reiniciar la bandera para permitir que se incrementen las estadísticas
         end
         // Verificar si el Tamagotchi ha muerto
+<<<<<<< HEAD
         if (hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15) begin
             not_dead = 0; // Desactivar la bandera para indicar que el Tamagotchi ha muerto
+=======
+        if ({hunger, happiness, health, hygiene, energy} == 5'd0) begin
+            not_dead <= 0; // Desactivar la bandera para indicar que el Tamagotchi ha muerto
+>>>>>>> 82714a6c886bb908ce4b1a6760b7ba41abe07725
         end
 
         if (inputs == 8'h77 || !not_dead) begin
-            is_sleeping = 0; // desactivar la bandera para indicar que el Tamagotchi está durmiendo
+            is_sleeping <= 0; // Desactivar la bandera para indicar que el Tamagotchi está durmiendo
         end
 
-            count = count + 1;
-        end
+        count <= count + 1;
     end
 
 endmodule
