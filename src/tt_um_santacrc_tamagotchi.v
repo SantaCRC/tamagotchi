@@ -21,12 +21,12 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     wire is_sleeping;
 
     // stats registers
-    reg [3:0] hunger;
+    reg [4:0] hunger;
     reg [4:0] happiness;
-    reg [3:0] health;
-    reg [3:0] hygiene;
-    reg [3:0] energy;
-    reg [3:0] social;
+    reg [4:0] health;
+    reg [4:0] hygiene;
+    reg [4:0] energy;
+    reg [4:0] social;
 
     reg [5:0] inputs_s = 6'b000000;
 
