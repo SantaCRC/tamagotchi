@@ -52,13 +52,8 @@ module stats(
             only_one <= 0; // Reiniciar la bandera para permitir que se incrementen las estadísticas
         end
         // Verificar si el Tamagotchi ha muerto
-<<<<<<< HEAD
         if (hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15) begin
             not_dead = 0; // Desactivar la bandera para indicar que el Tamagotchi ha muerto
-=======
-        if ({hunger, happiness, health, hygiene, energy} == 5'd0) begin
-            not_dead <= 0; // Desactivar la bandera para indicar que el Tamagotchi ha muerto
->>>>>>> 82714a6c886bb908ce4b1a6760b7ba41abe07725
         end
 
         if (inputs == 8'h77 || !not_dead) begin
