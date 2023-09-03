@@ -9,7 +9,7 @@ module stats(
     output reg [4:0] health,     // Estadística de salud
     output reg [4:0] hygiene,    // Estadística de higiene
     output reg [4:0] energy,     // Estadística de energía
-    output reg is_sleeping   
+    output reg is_sleeping      // Estadística social
 );
 
     reg [27:0] count = 0; // Contador de tiempo

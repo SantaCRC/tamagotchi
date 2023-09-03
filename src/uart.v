@@ -17,6 +17,7 @@ module uart
     input wire [4:0] health,
     input wire [4:0] hygiene,
     input wire [4:0] energy,
+    input wire [4:0] social,
     output reg [7:0] dataIn_R,
     input wire is_sleeping
 );
@@ -88,86 +89,96 @@ reg [7:0] txByteCounter = 0;
 
 assign uart_tx = txPinRegister;
 
-localparam MEMORY_LENGTH = 72;
-reg [7:0] mem [MEMORY_LENGTH-1:0];
+localparam MEMORY_LENGTH = 80;
+reg [7:0] testMemory [MEMORY_LENGTH-1:0];
 
 // (\__/)
 // (>'.'<)
 // (")_(")
 
 initial begin
-    mem[0] = "(";
-    mem[1] = "\\";
-    mem[2] = "_";
-    mem[3] = "_";
-    mem[4] = "/";
-    mem[5] = ")";
-    mem[6] = "\r";  
-    mem[7] = "\n";
-    mem[8] = "(";
-    mem[9] = ">";
-    mem[10] = "'";
-    mem[11] = ".";
-    mem[12] = "'";
-    mem[13] = "<";
-    mem[14] = ")";
-    mem[15] = "\r";
-    mem[16] = "\n";
-    mem[17] = "(";
-    mem[18] = "\"";
-    mem[19] = ")";
-    mem[20] = "_";
-    mem[21] = "(";
-    mem[22] = "\"";
-    mem[23] = ")";
-    mem[24] = "\r";
-    mem[25] = "\n";
-    mem[26] = "S";
-    mem[27] = "T";
-    mem[28] = "A";
-    mem[29] = "T";
-    mem[30] = "S";
-    mem[31] = "\r";
-    mem[32] = "\n";
-    mem[33] = "H";
-    mem[34] = "U";
-    mem[35] = ":";
-    mem[36] = " ";
-    mem[37] = "0";
-    mem[38] = "0";
-    mem[39] = "\r";
-    mem[40] = "\n";
-    mem[41] = "H";
-    mem[42] = "A";
-    mem[43] = ":";
-    mem[44] = " ";
-    mem[45] = "0";
-    mem[46] = "0";
-    mem[47] = "\r";
-    mem[48] = "\n";
-    mem[49] = "H";
-    mem[50] = "E";
-    mem[51] = ":";
-    mem[52] = " ";
-    mem[53] = "0";
-    mem[54] = "0";
-    mem[55] = "\r";
-    mem[56] = "\n";
-    mem[57] = "H";
-    mem[58] = "Y";
-    mem[59] = ":";
-    mem[60] = " ";
-    mem[61] = "0";
-    mem[62] = "0";
-    mem[63] = "\r";
-    mem[64] = "\n";
-    mem[65] = "E";
-    mem[66] = ":";
-    mem[67] = " ";
-    mem[68] = "0";
-    mem[69] = "0";
-    mem[70] = "\r";
-    mem[71] = "\n";
+    testMemory[0] = "(";
+    testMemory[1] = "\\";
+    testMemory[2] = "_";
+    testMemory[3] = "_";
+    testMemory[4] = "/";
+    testMemory[5] = ")";
+    testMemory[6] = "\r";  
+    testMemory[7] = "\n";
+    testMemory[8] = "(";
+    testMemory[9] = ">";
+    testMemory[10] = "'";
+    testMemory[11] = ".";
+    testMemory[12] = "'";
+    testMemory[13] = "<";
+    testMemory[14] = ")";
+    testMemory[15] = "\r";
+    testMemory[16] = "\n";
+    testMemory[17] = "(";
+    testMemory[18] = "\"";
+    testMemory[19] = ")";
+    testMemory[20] = "_";
+    testMemory[21] = "(";
+    testMemory[22] = "\"";
+    testMemory[23] = ")";
+    testMemory[24] = "\r";
+    testMemory[25] = "\n";
+    testMemory[26] = "S";
+    testMemory[27] = "T";
+    testMemory[28] = "A";
+    testMemory[29] = "T";
+    testMemory[30] = "S";
+    testMemory[31] = "\r";
+    testMemory[32] = "\n";
+    testMemory[33] = "H";
+    testMemory[34] = "U";
+    testMemory[35] = ":";
+    testMemory[36] = " ";
+    testMemory[37] = "0";
+    testMemory[38] = "0";
+    testMemory[39] = "\r";
+    testMemory[40] = "\n";
+    testMemory[41] = "H";
+    testMemory[42] = "A";
+    testMemory[43] = ":";
+    testMemory[44] = " ";
+    testMemory[45] = "0";
+    testMemory[46] = "0";
+    testMemory[47] = "\r";
+    testMemory[48] = "\n";
+    testMemory[49] = "H";
+    testMemory[50] = "E";
+    testMemory[51] = ":";
+    testMemory[52] = " ";
+    testMemory[53] = "0";
+    testMemory[54] = "0";
+    testMemory[55] = "\r";
+    testMemory[56] = "\n";
+    testMemory[57] = "H";
+    testMemory[58] = "Y";
+    testMemory[59] = ":";
+    testMemory[60] = " ";
+    testMemory[61] = "0";
+    testMemory[62] = "0";
+    testMemory[63] = "\r";
+    testMemory[64] = "\n";
+    testMemory[65] = "E";
+    testMemory[66] = ":";
+    testMemory[67] = " ";
+    testMemory[68] = "0";
+    testMemory[69] = "0";
+    testMemory[70] = "\r";
+    testMemory[71] = "\n";
+    testMemory[72] = "S";
+    testMemory[73] = "O";
+    testMemory[74] = ":";
+    testMemory[75] = " ";
+    testMemory[76] = "0";
+    testMemory[77] = "0";
+    testMemory[78] = "\r";
+    testMemory[79] = "\n";
+    // clear screen
+    testMemory[80] = "C";
 
 
 end
@@ -182,238 +193,252 @@ always @(posedge clk) begin
     // case hunger
     case (hunger)
         4'd0: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "0";
-            mem[38] = "0";
+            
+            
+            testMemory[37] = "0";
+            testMemory[38] = "0";
         end
         4'd1: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "0";
-            mem[38] = "1";
+            
+            
+            testMemory[37] = "0";
+            testMemory[38] = "1";
         end
         4'd2: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "0";
-            mem[38] = "2";
+            
+            
+            testMemory[37] = "0";
+            testMemory[38] = "2";
         end
         4'd3: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "0";
-            mem[38] = "3";
+            
+            
+            testMemory[37] = "0";
+            testMemory[38] = "3";
         end
         4'd4: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "0";
-            mem[38] = "4";
+            
+            
+            testMemory[37] = "0";
+            testMemory[38] = "4";
         end
         4'd5: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "0";
-            mem[38] = "5";
+            
+            
+            testMemory[37] = "0";
+            testMemory[38] = "5";
         end
         4'd6: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "0";
-            mem[38] = "6";
+            
+            
+            testMemory[37] = "0";
+            testMemory[38] = "6";
         end
         4'd7: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "0";
-            mem[38] = "7";
+            
+            
+            testMemory[37] = "0";
+            testMemory[38] = "7";
         end
         4'd8: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "0";
-            mem[38] = "8";
+            
+            
+            testMemory[37] = "0";
+            testMemory[38] = "8";
         end
         4'd9: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "0";
-            mem[38] = "9";
+            
+            
+            testMemory[37] = "0";
+            testMemory[38] = "9";
         end
         4'd10: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "1";
-            mem[38] = "0";
+            
+            
+            testMemory[37] = "1";
+            testMemory[38] = "0";
         end
         4'd11: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "1";
-            mem[38] = "1";
+            
+            
+            testMemory[37] = "1";
+            testMemory[38] = "1";
         end
         4'd12: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "1";
-            mem[38] = "2";
+            
+            
+            testMemory[37] = "1";
+            testMemory[38] = "2";
         end
         4'd13: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "1";
-            mem[38] = "3";
+            
+            
+            testMemory[37] = "1";
+            testMemory[38] = "3";
         end
         4'd14: begin
-            mem[10] = "'";
-            mem[12] = "'";
-            mem[37] = "1";
-            mem[38] = "4";
+            
+            
+            testMemory[37] = "1";
+            testMemory[38] = "4";
         end
         4'd15: begin
-            mem[37] = "1";
-            mem[38] = "5"; 
+            testMemory[37] = "1";
+            testMemory[38] = "5";
+            
+            
+        end
+        default: begin
+            testMemory[37] = "0";
+            testMemory[38] = "0";
         end
     endcase
 
     // case happiness
     case (15-happiness)
     4'd0: begin
-        mem[45] = "0";
-        mem[46] = "0";
+        testMemory[45] = "0";
+        testMemory[46] = "0";
     end
     4'd1: begin
-        mem[45] = "0";
-        mem[46] = "1";
+        testMemory[45] = "0";
+        testMemory[46] = "1";
     end
     4'd2: begin
-        mem[45] = "0";
-        mem[46] = "2";
+        testMemory[45] = "0";
+        testMemory[46] = "2";
     end
     4'd3: begin
-        mem[45] = "0";
-        mem[46] = "3";
+        testMemory[45] = "0";
+        testMemory[46] = "3";
     end
     4'd4: begin
-        mem[45] = "0";
-        mem[46] = "4";
+        testMemory[45] = "0";
+        testMemory[46] = "4";
     end
     4'd5: begin
-        mem[45] = "0";
-        mem[46] = "5";
+        testMemory[45] = "0";
+        testMemory[46] = "5";
     end
     4'd6: begin
-        mem[45] = "0";
-        mem[46] = "6";
+        testMemory[45] = "0";
+        testMemory[46] = "6";
     end
     4'd7: begin
-        mem[45] = "0";
-        mem[46] = "7";
+        testMemory[45] = "0";
+        testMemory[46] = "7";
     end
     4'd8: begin
-        mem[45] = "0";
-        mem[46] = "8";
+        testMemory[45] = "0";
+        testMemory[46] = "8";
     end
     4'd9: begin
-        mem[45] = "0";
-        mem[46] = "9";
+        testMemory[45] = "0";
+        testMemory[46] = "9";
     end
     4'd10: begin
-        mem[45] = "1";
-        mem[46] = "0";
+        testMemory[45] = "1";
+        testMemory[46] = "0";
     end
     4'd11: begin
-        mem[45] = "1";
-        mem[46] = "1";
+        testMemory[45] = "1";
+        testMemory[46] = "1";
     end
     4'd12: begin
-        mem[45] = "1";
-        mem[46] = "2";
+        testMemory[45] = "1";
+        testMemory[46] = "2";
     end
     4'd13: begin
-        mem[45] = "1";
-        mem[46] = "3";
+        testMemory[45] = "1";
+        testMemory[46] = "3";
     end
     4'd14: begin
-        mem[45] = "1";
-        mem[46] = "4";
+        testMemory[45] = "1";
+        testMemory[46] = "4";
     end
     4'd15: begin
-        mem[45] = "1";
-        mem[46] = "5";
+        testMemory[45] = "1";
+        testMemory[46] = "5";
         
         
+    end
+    default: begin
+        testMemory[45] = "0";
+        testMemory[46] = "0";
     end
 endcase
 
     // case health
     case (15-health)
     4'd0: begin
-        mem[53] = "0";
-        mem[54] = "0";
+        testMemory[53] = "0";
+        testMemory[54] = "0";
     end
     4'd1: begin
-        mem[53] = "0";
-        mem[54] = "1";
+        testMemory[53] = "0";
+        testMemory[54] = "1";
     end
     4'd2: begin
-        mem[53] = "0";
-        mem[54] = "2";
+        testMemory[53] = "0";
+        testMemory[54] = "2";
     end
     4'd3: begin
-        mem[53] = "0";
-        mem[54] = "3";
+        testMemory[53] = "0";
+        testMemory[54] = "3";
     end
     4'd4: begin
-        mem[53] = "0";
-        mem[54] = "4";
+        testMemory[53] = "0";
+        testMemory[54] = "4";
     end
     4'd5: begin
-        mem[53] = "0";
-        mem[54] = "5";
+        testMemory[53] = "0";
+        testMemory[54] = "5";
     end
     4'd6: begin
-        mem[53] = "0";
-        mem[54] = "6";
+        testMemory[53] = "0";
+        testMemory[54] = "6";
     end
     4'd7: begin
-        mem[53] = "0";
-        mem[54] = "7";
+        testMemory[53] = "0";
+        testMemory[54] = "7";
     end
     4'd8: begin
-        mem[53] = "0";
-        mem[54] = "8";
+        testMemory[53] = "0";
+        testMemory[54] = "8";
     end
     4'd9: begin
-        mem[53] = "0";
-        mem[54] = "9";
+        testMemory[53] = "0";
+        testMemory[54] = "9";
     end
     4'd10: begin
-        mem[53] = "1";
-        mem[54] = "0";
+        testMemory[53] = "1";
+        testMemory[54] = "0";
     end
     4'd11: begin
-        mem[53] = "1";
-        mem[54] = "1";
+        testMemory[53] = "1";
+        testMemory[54] = "1";
     end
     4'd12: begin
-        mem[53] = "1";
-        mem[54] = "2";
+        testMemory[53] = "1";
+        testMemory[54] = "2";
     end
     4'd13: begin
-        mem[53] = "1";
-        mem[54] = "3";
+        testMemory[53] = "1";
+        testMemory[54] = "3";
     end
     4'd14: begin
-        mem[53] = "1";
-        mem[54] = "4";
+        testMemory[53] = "1";
+        testMemory[54] = "4";
     end
     4'd15: begin
-        mem[53] = "1";
-        mem[54] = "5";
+        testMemory[53] = "1";
+        testMemory[54] = "5";
         
         
+    end
+    default: begin
+        testMemory[53] = "0";
+        testMemory[54] = "0";
     end
 
     endcase
@@ -421,166 +446,253 @@ endcase
     // case hygiene
     case (15-hygiene)
     4'd0: begin
-        mem[61] = "0";
-        mem[62] = "0";
+        testMemory[61] = "0";
+        testMemory[62] = "0";
     end
     4'd1: begin
-        mem[61] = "0";
-        mem[62] = "1";
+        testMemory[61] = "0";
+        testMemory[62] = "1";
     end
     4'd2: begin
-        mem[61] = "0";
-        mem[62] = "2";
+        testMemory[61] = "0";
+        testMemory[62] = "2";
     end
     4'd3: begin
-        mem[61] = "0";
-        mem[62] = "3";
+        testMemory[61] = "0";
+        testMemory[62] = "3";
     end
     4'd4: begin
-        mem[61] = "0";
-        mem[62] = "4";
+        testMemory[61] = "0";
+        testMemory[62] = "4";
     end
     4'd5: begin
-        mem[61] = "0";
-        mem[62] = "5";
+        testMemory[61] = "0";
+        testMemory[62] = "5";
     end
     4'd6: begin
-        mem[61] = "0";
-        mem[62] = "6";
+        testMemory[61] = "0";
+        testMemory[62] = "6";
     end
     4'd7: begin
-        mem[61] = "0";
-        mem[62] = "7";
+        testMemory[61] = "0";
+        testMemory[62] = "7";
     end
     4'd8: begin
-        mem[61] = "0";
-        mem[62] = "8";
+        testMemory[61] = "0";
+        testMemory[62] = "8";
     end
     4'd9: begin
-        mem[61] = "0";
-        mem[62] = "9";
+        testMemory[61] = "0";
+        testMemory[62] = "9";
     end
     4'd10: begin
-        mem[61] = "1";
-        mem[62] = "0";
+        testMemory[61] = "1";
+        testMemory[62] = "0";
     end
     4'd11: begin
-        mem[61] = "1";
-        mem[62] = "1";
+        testMemory[61] = "1";
+        testMemory[62] = "1";
     end
     4'd12: begin
-        mem[61] = "1";
-        mem[62] = "2";
+        testMemory[61] = "1";
+        testMemory[62] = "2";
     end
     4'd13: begin
-        mem[61] = "1";
-        mem[62] = "3";
+        testMemory[61] = "1";
+        testMemory[62] = "3";
     end
     4'd14: begin
-        mem[61] = "1";
-        mem[62] = "4";
+        testMemory[61] = "1";
+        testMemory[62] = "4";
     end
     4'd15: begin
-        mem[61] = "1";
-        mem[62] = "5";
+        testMemory[61] = "1";
+        testMemory[62] = "5";
         
         
+    end
+    default: begin
+        testMemory[61] = "0";
+        testMemory[62] = "0";
     end
     endcase
 
     // case energy
     case (15-energy)
     4'd0: begin
-        mem[68] = "0";
-        mem[69] = "0";
+        testMemory[68] = "0";
+        testMemory[69] = "0";
     end
     4'd1: begin
-        mem[68] = "0";
-        mem[69] = "1";
+        testMemory[68] = "0";
+        testMemory[69] = "1";
     end
     4'd2: begin
-        mem[68] = "0";
-        mem[69] = "2";
+        testMemory[68] = "0";
+        testMemory[69] = "2";
     end
     4'd3: begin
-        mem[68] = "0";
-        mem[69] = "3";
+        testMemory[68] = "0";
+        testMemory[69] = "3";
     end
     4'd4: begin
-        mem[68] = "0";
-        mem[69] = "4";
+        testMemory[68] = "0";
+        testMemory[69] = "4";
     end
     4'd5: begin
-        mem[68] = "0";
-        mem[69] = "5";
+        testMemory[68] = "0";
+        testMemory[69] = "5";
     end
     4'd6: begin
-        mem[68] = "0";
-        mem[69] = "6";
+        testMemory[68] = "0";
+        testMemory[69] = "6";
     end
     4'd7: begin
-        mem[68] = "0";
-        mem[69] = "7";
+        testMemory[68] = "0";
+        testMemory[69] = "7";
     end
     4'd8: begin
-        mem[68] = "0";
-        mem[69] = "8";
+        testMemory[68] = "0";
+        testMemory[69] = "8";
     end
     4'd9: begin
-        mem[68] = "0";
-        mem[69] = "9";
+        testMemory[68] = "0";
+        testMemory[69] = "9";
     end
     4'd10: begin
-        mem[68] = "1";
-        mem[69] = "0";
+        testMemory[68] = "1";
+        testMemory[69] = "0";
     end
     4'd11: begin
-        mem[68] = "1";
-        mem[69] = "1";
+        testMemory[68] = "1";
+        testMemory[69] = "1";
     end
     4'd12: begin
-        mem[68] = "1";
-        mem[69] = "2";
+        testMemory[68] = "1";
+        testMemory[69] = "2";
     end
     4'd13: begin
-        mem[68] = "1";
-        mem[69] = "3";
+        testMemory[68] = "1";
+        testMemory[69] = "3";
     end
     4'd14: begin
-        mem[68] = "1";
-        mem[69] = "4";
+        testMemory[68] = "1";
+        testMemory[69] = "4";
     end
     4'd15: begin
-        mem[68] = "1";
-        mem[69] = "5";
+        testMemory[68] = "1";
+        testMemory[69] = "5";
         
         
+    end
+    default: begin
+        testMemory[68] = "0";
+        testMemory[69] = "0";
+    end
+    endcase
+    // case social
+    case (15-social)
+    4'd0: begin
+        testMemory[76] = "0";
+        testMemory[77] = "0";
+    end
+    4'd1: begin
+        testMemory[76] = "0";
+        testMemory[77] = "1";
+    end
+    4'd2: begin
+        testMemory[76] = "0";
+        testMemory[77] = "2";
+    end
+    4'd3: begin
+        testMemory[76] = "0";
+        testMemory[77] = "3";
+    end
+    4'd4: begin
+        testMemory[76] = "0";
+        testMemory[77] = "4";
+    end
+    4'd5: begin
+        testMemory[76] = "0";
+        testMemory[77] = "5";
+    end
+    4'd6: begin
+        testMemory[76] = "0";
+        testMemory[77] = "6";
+    end
+    4'd7: begin
+        testMemory[76] = "0";
+        testMemory[77] = "7";
+    end
+    4'd8: begin
+        testMemory[76] = "0";
+        testMemory[77] = "8";
+    end
+    4'd9: begin
+        testMemory[76] = "0";
+        testMemory[77] = "9";
+    end
+    4'd10: begin
+        testMemory[76] = "1";
+        testMemory[77] = "0";
+    end
+    4'd11: begin
+        testMemory[76] = "1";
+        testMemory[77] = "1";
+    end
+    4'd12: begin
+        testMemory[76] = "1";
+        testMemory[77] = "2";
+    end
+    4'd13: begin
+        testMemory[76] = "1";
+        testMemory[77] = "3";
+    end
+    4'd14: begin
+        testMemory[76] = "1";
+        testMemory[77] = "4";
+    end
+    4'd15: begin
+        testMemory[76] = "1";
+        testMemory[77] = "5";     
+    end
+    default: begin
+        testMemory[76] = "0";
+        testMemory[77] = "0";
     end
     endcase
 
     if (is_sleeping == 1) begin
-        mem[10] = "Z";
-        mem[12] = "Z";
+        testMemory[10] = "Z";
+        testMemory[12] = "Z";
+    end
+    if (!is_sleeping && social > 4'd9) begin
+        testMemory[10] = "-";
+        testMemory[12] = "-";
     end
     if (!is_sleeping && happiness > 4'd9) begin
-        mem[10] = "T";
-        mem[12] = "T";
+        testMemory[10] = "T";
+        testMemory[12] = "T";
     end
+    // if (!is_sleeping && hygiene > 4'd9) begin
+    //     testMemory[10] = "%";
+    //     testMemory[12] = "%";
+    // end
     if (!is_sleeping && energy > 4'd9) begin
-        mem[10] = "O";
-        mem[12] = "O";
+        testMemory[10] = "O";
+        testMemory[12] = "O";
     end
     if (!is_sleeping && health > 4'd9) begin
-        mem[10] = "~";
-        mem[12] = "~";
+        testMemory[10] = "~";
+        testMemory[12] = "~";
     end 
     if (!is_sleeping && hunger > 4'd9) begin
-        mem[10] = "@";
-        mem[12] = "@";
+        testMemory[10] = "@";
+        testMemory[12] = "@";
     end
-    if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15) begin
-        mem[10] = "X";
-        mem[12] = "X";
+    if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15 || social == 4'd15) begin
+        testMemory[10] = "X";
+        testMemory[12] = "X";
     end
 
 
@@ -599,7 +711,7 @@ endcase
             txPinRegister <= 0;
             if ((txCounter + 1) == DELAY_FRAMES) begin
                 txState <= TX_STATE_WRITE;
-                dataOut <= mem[txByteCounter];
+                dataOut <= testMemory[txByteCounter];
                 txBitNumber <= 0;
                 txCounter <= 0;
             end else 
