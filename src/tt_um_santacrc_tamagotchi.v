@@ -18,6 +18,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     wire rx = ui_in[0];
     wire tx = uo_out[0];	
     assign uo_out[7:1] = 7'b0000000;
+    wire is_sleeping;
 
     // stats registers
     reg [3:0] hunger;
@@ -59,7 +60,8 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
         .energy(energy),
         .social(social),
         .inputs(dataIn),
-        .reset(reset)
+        .reset(reset),
+        .is_sleeping(is_sleeping)
     );
 
     // call states module
@@ -97,7 +99,8 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
         .health(health),
         .hygiene(hygiene),
         .energy(energy),
-        .social(social)
+        .social(social),
+        .is_sleeping(is_sleeping)
     );
 
 endmodule
