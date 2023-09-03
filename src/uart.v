@@ -182,104 +182,98 @@ always @(posedge clk) begin
     // case hunger
     case (hunger)
         4'd0: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "0";
             mem[38] = "0";
         end
         4'd1: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "0";
             mem[38] = "1";
         end
         4'd2: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "0";
             mem[38] = "2";
         end
         4'd3: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "0";
             mem[38] = "3";
         end
         4'd4: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "0";
             mem[38] = "4";
         end
         4'd5: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "0";
             mem[38] = "5";
         end
         4'd6: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "0";
             mem[38] = "6";
         end
         4'd7: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "0";
             mem[38] = "7";
         end
         4'd8: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "0";
             mem[38] = "8";
         end
         4'd9: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "0";
             mem[38] = "9";
         end
         4'd10: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "1";
             mem[38] = "0";
         end
         4'd11: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "1";
             mem[38] = "1";
         end
         4'd12: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "1";
             mem[38] = "2";
         end
         4'd13: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "1";
             mem[38] = "3";
         end
         4'd14: begin
-            mem[10] = "'";
-            mem[12] = "'";
+            
+            
             mem[37] = "1";
             mem[38] = "4";
         end
         4'd15: begin
             mem[37] = "1";
-            mem[38] = "5";
-            
-            
-        end
-        default: begin
-            mem[37] = "0";
-            mem[38] = "0";
+            mem[38] = "5"; 
         end
     endcase
 
@@ -347,13 +341,7 @@ always @(posedge clk) begin
     end
     4'd15: begin
         mem[45] = "1";
-        mem[46] = "5";
-        
-        
-    end
-    default: begin
-        mem[45] = "0";
-        mem[46] = "0";
+        mem[46] = "5"; 
     end
 endcase
 
@@ -424,10 +412,6 @@ endcase
         mem[54] = "5";
         
         
-    end
-    default: begin
-        mem[53] = "0";
-        mem[54] = "0";
     end
 
     endcase
@@ -500,10 +484,6 @@ endcase
         
         
     end
-    default: begin
-        mem[61] = "0";
-        mem[62] = "0";
-    end
     endcase
 
     // case energy
@@ -574,11 +554,10 @@ endcase
         
         
     end
-    default: begin
-        mem[68] = "0";
-        mem[69] = "0";
-    end
     endcase
+
+    mem[10] = "'";
+    mem[12] = "'";
 
     if (is_sleeping == 1) begin
         mem[10] = "Z";
