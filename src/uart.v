@@ -87,7 +87,7 @@ reg [7:0] txByteCounter = 0;
 
 assign uart_tx = txPinRegister;
 
-localparam MEMORY_LENGTH = 72;
+localparam MEMORY_LENGTH = 31;
 reg [7:0] mem [MEMORY_LENGTH-1:0];
 
 // (\__/)
@@ -121,54 +121,11 @@ initial begin
     mem[23] = ")";
     mem[24] = "\r";
     mem[25] = "\n";
-    mem[26] = "S";
-    mem[27] = "T";
-    mem[28] = "A";
-    mem[29] = "T";
+    mem[26] = "N";
+    mem[27] = "E";
+    mem[28] = "E";
+    mem[29] = "D";
     mem[30] = "S";
-    mem[31] = "\r";
-    mem[32] = "\n";
-    mem[33] = "H";
-    mem[34] = "U";
-    mem[35] = ":";
-    mem[36] = " ";
-    mem[37] = "0";
-    mem[38] = "0";
-    mem[39] = "\r";
-    mem[40] = "\n";
-    mem[41] = "H";
-    mem[42] = "A";
-    mem[43] = ":";
-    mem[44] = " ";
-    mem[45] = "0";
-    mem[46] = "0";
-    mem[47] = "\r";
-    mem[48] = "\n";
-    mem[49] = "H";
-    mem[50] = "E";
-    mem[51] = ":";
-    mem[52] = " ";
-    mem[53] = "0";
-    mem[54] = "0";
-    mem[55] = "\r";
-    mem[56] = "\n";
-    mem[57] = "H";
-    mem[58] = "Y";
-    mem[59] = ":";
-    mem[60] = " ";
-    mem[61] = "0";
-    mem[62] = "0";
-    mem[63] = "\r";
-    mem[64] = "\n";
-    mem[65] = "E";
-    mem[66] = ":";
-    mem[67] = " ";
-    mem[68] = "0";
-    mem[69] = "0";
-    mem[70] = "\r";
-    mem[71] = "\n";
-
-
 end
 
 localparam TX_STATE_IDLE = 0;
@@ -178,107 +135,107 @@ localparam TX_STATE_STOP_BIT = 3;
 localparam TX_STATE_DEBOUNCE = 4;
 
 always @(posedge clk) begin
-    // case hunger
-    case (hunger)
-        4'd0: begin
+//     // case hunger
+//     case (hunger)
+//         4'd0: begin
             
             
-            mem[37] = "0";
-            mem[38] = "0";
-        end
-        4'd1: begin
-            
-            
-            mem[37] = "0";
-            mem[38] = "1";
-        end
-        4'd2: begin
-            
-            
-            mem[37] = "0";
-            mem[38] = "2";
-        end
-        4'd3: begin
-            
-            
-            mem[37] = "0";
-            mem[38] = "3";
-        end
-        4'd4: begin
-            
-            
-            mem[37] = "0";
-            mem[38] = "4";
-        end
-        4'd5: begin
-            
-            
-            mem[37] = "0";
-            mem[38] = "5";
-        end
-        4'd6: begin
-            
-            
-            mem[37] = "0";
-            mem[38] = "6";
-        end
-        4'd7: begin
-            
-            
-            mem[37] = "0";
-            mem[38] = "7";
-        end
-        4'd8: begin
-            
-            
-            mem[37] = "0";
-            mem[38] = "8";
-        end
-        4'd9: begin
-            
-            
-            mem[37] = "0";
-            mem[38] = "9";
-        end
-        4'd10: begin
-            
-            
-            mem[37] = "1";
-            mem[38] = "0";
-        end
-        4'd11: begin
-            
-            
-            mem[37] = "1";
-            mem[38] = "1";
-        end
-        4'd12: begin
-            
-            
-            mem[37] = "1";
-            mem[38] = "2";
-        end
-        4'd13: begin
-            
-            
-            mem[37] = "1";
-            mem[38] = "3";
-        end
-        4'd14: begin
-            
-            
-            mem[37] = "1";
-            mem[38] = "4";
-        end
-        4'd15: begin
-            mem[37] = "1";
-            mem[38] = "5";
-        end
-//         default: begin
 //             mem[37] = "0";
 //             mem[38] = "0";
 //         end
-    endcase
+//         4'd1: begin
+            
+            
+//             mem[37] = "0";
+//             mem[38] = "1";
+//         end
+//         4'd2: begin
+            
+            
+//             mem[37] = "0";
+//             mem[38] = "2";
+//         end
+//         4'd3: begin
+            
+            
+//             mem[37] = "0";
+//             mem[38] = "3";
+//         end
+//         4'd4: begin
+            
+            
+//             mem[37] = "0";
+//             mem[38] = "4";
+//         end
+//         4'd5: begin
+            
+            
+//             mem[37] = "0";
+//             mem[38] = "5";
+//         end
+//         4'd6: begin
+            
+            
+//             mem[37] = "0";
+//             mem[38] = "6";
+//         end
+//         4'd7: begin
+            
+            
+//             mem[37] = "0";
+//             mem[38] = "7";
+//         end
+//         4'd8: begin
+            
+            
+//             mem[37] = "0";
+//             mem[38] = "8";
+//         end
+//         4'd9: begin
+            
+            
+//             mem[37] = "0";
+//             mem[38] = "9";
+//         end
+//         4'd10: begin
+            
+            
+//             mem[37] = "1";
+//             mem[38] = "0";
+//         end
+//         4'd11: begin
+            
+            
+//             mem[37] = "1";
+//             mem[38] = "1";
+//         end
+//         4'd12: begin
+            
+            
+//             mem[37] = "1";
+//             mem[38] = "2";
+//         end
+//         4'd13: begin
+            
+            
+//             mem[37] = "1";
+//             mem[38] = "3";
+//         end
+//         4'd14: begin
+            
+            
+//             mem[37] = "1";
+//             mem[38] = "4";
+//         end
+//         4'd15: begin
+//             mem[37] = "1";
+//             mem[38] = "5";
+//         end
+// //         default: begin
+// //             mem[37] = "0";
+// //             mem[38] = "0";
+// //         end
+//     endcase
 
 //     // case happiness
 //     case (15-happiness)
