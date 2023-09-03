@@ -178,109 +178,107 @@ localparam TX_STATE_STOP_BIT = 3;
 localparam TX_STATE_DEBOUNCE = 4;
 
 always @(posedge clk) begin
-//     // case hunger
-//     case (hunger)
-//         4'd0: begin
+    // case hunger
+    case (hunger)
+        4'd0: begin
             
             
-//             mem[37] = "0";
-//             mem[38] = "0";
-//         end
-//         4'd1: begin
+            mem[37] = "0";
+            mem[38] = "0";
+        end
+        4'd1: begin
             
             
-//             mem[37] = "0";
-//             mem[38] = "1";
-//         end
-//         4'd2: begin
+            mem[37] = "0";
+            mem[38] = "1";
+        end
+        4'd2: begin
             
             
-//             mem[37] = "0";
-//             mem[38] = "2";
-//         end
-//         4'd3: begin
+            mem[37] = "0";
+            mem[38] = "2";
+        end
+        4'd3: begin
             
             
-//             mem[37] = "0";
-//             mem[38] = "3";
-//         end
-//         4'd4: begin
+            mem[37] = "0";
+            mem[38] = "3";
+        end
+        4'd4: begin
             
             
-//             mem[37] = "0";
-//             mem[38] = "4";
-//         end
-//         4'd5: begin
+            mem[37] = "0";
+            mem[38] = "4";
+        end
+        4'd5: begin
             
             
-//             mem[37] = "0";
-//             mem[38] = "5";
-//         end
-//         4'd6: begin
+            mem[37] = "0";
+            mem[38] = "5";
+        end
+        4'd6: begin
             
             
-//             mem[37] = "0";
-//             mem[38] = "6";
-//         end
-//         4'd7: begin
+            mem[37] = "0";
+            mem[38] = "6";
+        end
+        4'd7: begin
             
             
-//             mem[37] = "0";
-//             mem[38] = "7";
-//         end
-//         4'd8: begin
+            mem[37] = "0";
+            mem[38] = "7";
+        end
+        4'd8: begin
             
             
-//             mem[37] = "0";
-//             mem[38] = "8";
-//         end
-//         4'd9: begin
+            mem[37] = "0";
+            mem[38] = "8";
+        end
+        4'd9: begin
             
             
-//             mem[37] = "0";
-//             mem[38] = "9";
-//         end
-//         4'd10: begin
+            mem[37] = "0";
+            mem[38] = "9";
+        end
+        4'd10: begin
             
             
-//             mem[37] = "1";
-//             mem[38] = "0";
-//         end
-//         4'd11: begin
+            mem[37] = "1";
+            mem[38] = "0";
+        end
+        4'd11: begin
             
             
-//             mem[37] = "1";
-//             mem[38] = "1";
-//         end
-//         4'd12: begin
+            mem[37] = "1";
+            mem[38] = "1";
+        end
+        4'd12: begin
             
             
-//             mem[37] = "1";
-//             mem[38] = "2";
-//         end
-//         4'd13: begin
+            mem[37] = "1";
+            mem[38] = "2";
+        end
+        4'd13: begin
             
             
-//             mem[37] = "1";
-//             mem[38] = "3";
-//         end
-//         4'd14: begin
+            mem[37] = "1";
+            mem[38] = "3";
+        end
+        4'd14: begin
             
             
-//             mem[37] = "1";
-//             mem[38] = "4";
-//         end
-//         4'd15: begin
-//             mem[37] = "1";
-//             mem[38] = "5";
-            
-            
-//         end
+            mem[37] = "1";
+            mem[38] = "4";
+        end
+        4'd15: begin
+            mem[37] = "1";
+            mem[38] = "5";
+        end
 //         default: begin
 //             mem[37] = "0";
 //             mem[38] = "0";
 //         end
-//     endcase
+    endcase
 
 //     // case happiness
 //     case (15-happiness)
