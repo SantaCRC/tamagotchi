@@ -7,7 +7,6 @@ project:
 # Source files must be in ./src and you must list each source file separately
   source_files:        
     - tt_um_santacrc_tamagotchi.v
-    - states.v
     - stats.v
     - random.v
     - uart.v

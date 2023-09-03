@@ -43,7 +43,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     assign uio_oe = 8'b11111111;
 
     // output status to leds
-    assign uio_out = status;
+    assign uio_out = 8'b00000000;
 
 
     // tamagotchi's animation
@@ -62,19 +62,6 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
         .inputs(dataIn),
         .reset(reset),
         .is_sleeping(is_sleeping)
-    );
-
-    // call states module
-    states states(
-        .clk(clk),
-        .hunger(hunger),
-        .reset(reset),
-        .happiness(happiness),
-        .health(health),
-        .hygiene(hygiene),
-        .energy(energy),
-        .social(social),
-        .status(status)
     );
 
     // call random module
