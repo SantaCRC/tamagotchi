@@ -17,7 +17,6 @@ module uart
     input wire [4:0] health,
     input wire [4:0] hygiene,
     input wire [4:0] energy,
-    input wire [4:0] social,
     output reg [7:0] dataIn_R,
     input wire is_sleeping
 );
@@ -590,87 +589,10 @@ endcase
         mem[69] = "0";
     end
     endcase
-    // case social
-    case (15-social)
-    4'd0: begin
-        mem[76] = "0";
-        mem[77] = "0";
-    end
-    4'd1: begin
-        mem[76] = "0";
-        mem[77] = "1";
-    end
-    4'd2: begin
-        mem[76] = "0";
-        mem[77] = "2";
-    end
-    4'd3: begin
-        mem[76] = "0";
-        mem[77] = "3";
-    end
-    4'd4: begin
-        mem[76] = "0";
-        mem[77] = "4";
-    end
-    4'd5: begin
-        mem[76] = "0";
-        mem[77] = "5";
-    end
-    4'd6: begin
-        mem[76] = "0";
-        mem[77] = "6";
-    end
-    4'd7: begin
-        mem[76] = "0";
-        mem[77] = "7";
-    end
-    4'd8: begin
-        mem[76] = "0";
-        mem[77] = "8";
-    end
-    4'd9: begin
-        mem[76] = "0";
-        mem[77] = "9";
-    end
-    4'd10: begin
-        mem[76] = "1";
-        mem[77] = "0";
-    end
-    4'd11: begin
-        mem[76] = "1";
-        mem[77] = "1";
-    end
-    4'd12: begin
-        mem[76] = "1";
-        mem[77] = "2";
-    end
-    4'd13: begin
-        mem[76] = "1";
-        mem[77] = "3";
-    end
-    4'd14: begin
-        mem[76] = "1";
-        mem[77] = "4";
-    end
-    4'd15: begin
-        mem[76] = "1";
-        mem[77] = "5";
-        
-        
-    end
-    default: begin
-        mem[76] = "0";
-        mem[77] = "0";
-    end
-    endcase
 
     if (is_sleeping == 1) begin
         mem[10] = "Z";
         mem[12] = "Z";
-    end
-    if (!is_sleeping && social > 4'd9) begin
-        mem[10] = "-";
-        mem[12] = "-";
     end
     if (!is_sleeping && happiness > 4'd9) begin
         mem[10] = "T";
@@ -692,7 +614,7 @@ endcase
         mem[10] = "@";
         mem[12] = "@";
     end
-    if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15 || social == 4'd15) begin
+    if(hunger == 4'd15 || happiness == 4'd15 || health == 4'd15 || hygiene == 4'd15 || energy == 4'd15) begin
         mem[10] = "X";
         mem[12] = "X";
     end

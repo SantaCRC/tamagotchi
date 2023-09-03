@@ -26,7 +26,6 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     reg [4:0] health;
     reg [4:0] hygiene;
     reg [4:0] energy;
-    reg [4:0] social;
 
     reg [5:0] inputs_s = 6'b000000;
 
@@ -58,7 +57,6 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
         .health(health),
         .hygiene(hygiene),
         .energy(energy),
-        .social(social),
         .inputs(dataIn),
         .reset(reset),
         .is_sleeping(is_sleeping)
@@ -86,7 +84,6 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
         .health(health),
         .hygiene(hygiene),
         .energy(energy),
-        .social(social),
         .is_sleeping(is_sleeping)
     );
 
