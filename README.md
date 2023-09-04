@@ -40,14 +40,14 @@ If you don't take care of your pet, it will die. To revive it, you need to reset
 For every state the Tamagotchi has an animation. Here you can see them:
 | State | Animation |
 | --- | --- |
-| Awake/normal | ![picture 1](images/85213b3fccad68a4514f4539f9f3eb33c2b94928280457c1e3fa535f72cc02b3.png)|
+| Awake/normal | ![picture 6](images/66efdfbfdad870bac365949b05fcfa1401c199cff2b7ba865e3ecdbf287da581.png)  |
 | Sleep |  ![picture 2](images/2d855852f527f15682be931ec3ac42b25b59667f173582e45dbf8281c3df7b15.png)|
 | Dead | ![dead](images/d3995d06a678aa63d5249022531cb040412afb064b4fa816612a7366378edc01.png) |
 | Hungry | ![![revive](images/revive.gif) 1](images/41da8ccd67a5408e97dc32218f401963bc25e5097a26b31d44dcad26a90605c9.png)|
 | Sad | ![picture 4](images/c2d052094b6141d0fc0fd3e62b2066bb007d0798cf714db3219fd34d2ff2553d.png)  |
 | Dirty | ![picture 5](images/e9c5fd6232ee7e732bc88a89e2629686d538ce320f9bf8d4ab58aebc6b27cb03.png) |
-| Tired | ![tired](images/tired.gif) |
-| Lonely | ![lonely](images/lonely.gif) |
+| Tired | ![picture 1](images/85213b3fccad68a4514f4539f9f3eb33c2b94928280457c1e3fa535f72cc02b3.png)|
+| Lonely | ![picture 7](images/fc6c7cbbc8e8e087690882441b156bb722557afaf1b373eb3db590bbd96b542a.png) |
 
 
   
