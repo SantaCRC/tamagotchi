@@ -163,7 +163,7 @@ always @(posedge clk) begin
     if (!is_sleeping && social > 4'd9) begin
         testMemory[10] = "-";
         testMemory[12] = "-";
-        testMemory[33] = "S";
+        testMemory[33] = "T";
     end
     if (!is_sleeping && happiness > 4'd9) begin
         testMemory[10] = "T";
