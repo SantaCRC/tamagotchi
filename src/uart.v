@@ -106,9 +106,9 @@ initial begin
     mem[7] = "\n";
     mem[8] = "(";
     mem[9] = ">";
-    mem[10] = "'";
+    mem[10] = "O";
     mem[11] = ".";
-    mem[12] = "'";
+    mem[12] = "O";
     mem[13] = "<";
     mem[14] = ")";
     mem[15] = "\r";
@@ -147,8 +147,8 @@ localparam TX_STATE_STOP_BIT = 3;
 localparam TX_STATE_DEBOUNCE = 4;
 
 always @(posedge clk) begin
-    mem[10] = "'";
-    mem[12] = "'";
+    mem[10] = "O";
+    mem[12] = "O";
     mem[33] = "-";
     mem[34] = "-";
     mem[35] = "-";
@@ -176,8 +176,8 @@ always @(posedge clk) begin
         mem[35] = "B";
     end
     if (!is_sleeping && energy > 4'd9) begin
-        mem[10] = "O";
-        mem[12] = "O";
+        mem[10] = "'";
+        mem[12] = "'";
         mem[36] = "S";
     end
     if (!is_sleeping && hunger > 4'd9) begin
