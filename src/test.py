@@ -39,7 +39,6 @@ async def status(dut):
             dut._log.info("hy: %d" % dut.tt_um_santacrc_tamagotchi.hygiene.value)
             dut._log.info("hu: %d" % dut.tt_um_santacrc_tamagotchi.hunger.value)
             dut._log.info("hp: %d" % dut.tt_um_santacrc_tamagotchi.happiness.value)
-            dut._log.info("he: %d" % dut.tt_um_santacrc_tamagotchi.health.value)
             await ClockCycles(dut.clk, 1)
             ini = random.randint(0, 3)
             dut.ui_in[ini].value = 1
