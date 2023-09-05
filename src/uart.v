@@ -7,7 +7,6 @@ module uart
 (
     input  clk,
     input  uart_rx,
-    input  [7:0] status,
     output uart_tx,
     output reg [5:0] led,
     input btn1,
