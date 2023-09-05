@@ -35,8 +35,8 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     // random number
     wire [7:0] random_number;
 
-    // use bidirectionals as outputs
-    assign uio_oe = 8'b11111111;
+    // use bidirectionals as inputs
+    assign uio_oe = 8'b00000000;
 
     // output status to leds
     assign uio_out = 8'b00000000;
@@ -63,6 +63,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     random random(
         .clk(clk),
         .rst(reset),
+        .dataIn(uio_in),
         .rand_out(random_number)
     );
     
