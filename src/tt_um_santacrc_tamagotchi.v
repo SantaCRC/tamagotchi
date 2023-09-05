@@ -63,7 +63,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     random random(
         .clk(clk),
         .rst(reset),
-        .dataIn(uio_in),
+        .seed(uio_in),
         .rand_out(random_number)
     );
     
