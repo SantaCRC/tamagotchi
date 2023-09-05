@@ -42,7 +42,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     // output status to leds
     assign uio_out = 8'b00000000;
 
-    assign seed = 8'b00000000;
+    assign seed = uio_in[7:0];
 
     // tamagotchi's animation
 
