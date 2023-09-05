@@ -19,6 +19,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     wire tx = uo_out[0];	
     assign uo_out[7:1] = 7'b0000000;
     wire is_sleeping;
+    wire [7:0] seed;
 
     // stats registers
     reg [4:0] hunger;
@@ -41,6 +42,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     // output status to leds
     assign uio_out = 8'b00000000;
 
+    assign seed = uio_in;
 
     // tamagotchi's animation
 
@@ -63,7 +65,7 @@ module tt_um_santacrc_tamagotchi #( parameter MAX_COUNT = 24'd10_000_000 ) (
     random random(
         .clk(clk),
         .rst(reset),
-        .seed(uio_in),
+        .seed(seed),
         .rand_out(random_number)
     );
     
